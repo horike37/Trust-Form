@@ -28,7 +28,7 @@ Please contact to me.
 
 = Contributors =
 * [Horike Takahiro](http://twitter.com/horike37)
-* [Seguchi Rie](http://twitter.com/rie05) making the admin screen icon
+* [Seguchi Rie](http://5dg.biz) making the admin screen icon
 
 == Installation ==
 
