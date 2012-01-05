@@ -1,0 +1,341 @@
+@charset "utf-8";
+
+#icon-trust-form-logo {
+	background: url("../images/logo.png") no-repeat scroll -4px -5px transparent;
+}
+
+#short-code-box {
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	background:#FAFAFA;
+	border:1px solid #CCC;
+	margin:10px 0;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+#trust-form-short-code-under {
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	background:#FAFAFA;
+	border:1px solid #CCC;
+	margin:10px 0;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding: 5px;
+}
+
+#trust-form-title-msg {
+	font-size: 18px;
+}
+#trust-form-short-code-under input,
+#trust-form-short-code input {
+	background:white;
+	margin-left: 10px;
+}
+
+#short-code-box p {
+	margin:10px;
+	padding: 5px;
+}
+input.trust-form-title {
+	background:#FAFAFA;
+	border-style:dotted;
+}
+
+ul.toolbar {
+    background-color: #222222;
+    background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #FFFFFF;
+    font-family: Helvetica,Arial,Sans;
+    list-style-type: none;
+    margin: 0 0 15px 0;
+    padding: 5px 30px;
+    text-align: left;
+}
+ul.toolbar li {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2), 0 0 2px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: bold;
+    margin: 0;
+    min-width: 100px;
+    padding: 3px 5px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+ul.toolbar li:first-child {
+    border-radius: 3px 0 0 3px;
+}
+ul.toolbar li:last-child {
+    border-radius: 0 3px 3px 0;
+    border-width: 1px;
+}
+ul.toolbar li.selected, ul.toolbar li:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+ul.toolbar li:active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.element-title {
+    padding: 10px 12px;
+    white-space: nowrap;
+}
+
+.element-title h4 {
+	line-height: 1;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#side-box-right {
+	width:700px;
+	margin-left: 20px;
+}
+
+#admin-mail {
+	margin-top:20px;
+}
+
+.sort-hover {
+    border-top: 7px dotted #999999;
+}
+
+.element-hover {
+	cursor: move;
+	background-color: #F5F5F5;
+	border: 2px dotted #999999;
+}
+
+.element-hover-edit {
+	background-color: #FFF8DC;
+	border: 2px dotted #999999;
+}
+
+.element-title-hover input {
+	/*border: 1px solid #F5F5F5;*/
+	background-color:#FFF8DC;
+}
+
+.edit-element-container {
+	width: 70px;
+}
+
+.setting-element {
+	margin: 7px 0px 7px 30px;
+	/*width: 170px;*/
+}
+
+.edit-menu-icon {
+	margin: 2px 7px 0 7px;
+	cursor: pointer;
+}
+
+.text-edit-content {
+	width:300px;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+	padding: 10px;
+	border-radius: 4px;
+	z-index: 100;
+}
+
+#css-editor {
+	height: 500px;
+}
+
+.text-edit-conten-spencer {
+    border: #808080 1px dotted;
+}
+
+.display-out {
+	display:none;
+} 
+
+.text-edit-content-title {
+	margin-top: 20px;
+}
+
+.edit-content-title {
+    background: none repeat scroll 0 0 #ECECEC;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    padding: 8px 0 8px 10px;
+}
+
+.edit-content-title span {
+    font-size:18px;
+}
+
+.del-icon {
+	float:right;
+	position: relative;
+	bottom:15px;
+	right:8px;
+	cursor:pointer;
+}
+
+.submit-element-container {
+	position: relative;
+	bottom: 40px;
+}
+
+#info-message-input,
+#info-message-confirm,
+#info-message-finish {
+	color: #AAAAAA;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+}
+
+.info-message {
+	color: #AAAAAA;
+    font-size: 24px;
+    text-align: center;
+    padding: 7px 0 7px 5px;
+}
+
+.html-edit-container {
+	margin: 7px;
+}
+
+.html-content {
+	margin: 7px 0 7px 30px;
+}
+
+table#standard-form-element-list {
+     border-spacing: 0;
+     margin: 20px 10px;
+}
+
+table#standard-form-element-list td {
+    padding: 5px;
+    /*border: 1px #E3E3E3 solid;
+    border-width: 0 0 1px 1px;*/
+    text-align: center;
+}
+
+table#standard-form-element-list td ul {
+	margin: 0;
+}
+
+.form-element {
+	background: #ECECEC;
+    margin: 0 25px 15px;
+    width: 200px;
+    height: 30px;
+	cursor: move;
+	border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+}
+
+.element-title h4 {
+	position: relative;
+	left: 70px;
+}
+
+.contact-form{
+	margin-left:2em;
+}
+
+.subject-hover {
+	padding: 0 15px;
+	border: 2px dotted #C0C0C0;
+}
+
+/*----------- entry.php ------------------*/
+#entry-contaier {
+	margin-top: 20px;
+}
+
+.entry-box {
+	float:left;
+}
+
+.entry-box h3 {
+	background-color: #F1F1F1;
+    background-image: -moz-linear-gradient(center top , #F9F9F9, #ECECEC);
+	color: #464646;
+    box-shadow: 0 1px 0 #FFFFFF;
+    text-shadow: 0 1px 0 #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding: 7px 10px;
+    -moz-user-select: none;
+    cursor: move;
+    margin-top: 1px;
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+}
+
+#entry-note-box {
+	margin-left: 3em;
+	border-style: solid;
+    border-width: 1px;
+    line-height: 1;
+	border-color: #DFDFDF;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+}
+
+#add-note {
+	background-color: #F5F5F5;
+    background-image: -moz-linear-gradient(center top , #F9F9F9, #F5F5F5);
+    padding: 7px 20px;
+}
+
+#entry-detail {
+	width:100%;
+	border: 1px #E3E3E3 solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top-style: none;
+}
+
+#entry-detail th {
+	width:35%;
+	white-space: nowrap;
+	padding:1em 0;
+	border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+}
+
+#entry-detail td {
+	width:65%;
+	text-align: center;
+	padding:1em;
+	border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+}
+
+.note-detail {
+	padding: 7px 20px;
+	border-bottom: 1px #E3E3E3 dotted;
+}
+
+/*----------- entries-list ------------------*/
+
+#entry-form {
+	margin: 10px 7px 0;
+}
+
+tr.read {
+	background-color: #C0C0C0;
+}
+
+

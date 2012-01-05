@@ -1,0 +1,402 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Trust Forms\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-19 22:01+0900\n"
+"PO-Revision-Date: 2012-01-03 10:45+0900\n"
+"Last-Translator: horike37 <horike37@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: trust-forms\n"
+
+########## trust-forms/trust-forms.php ###########
+#: line 304,trust-forms/admin/add.php 10,trust-forms/admin/edit.php 20,trust-forms/admin/entries.php 28
+msgid "Trust Form"
+msgstr "Trust Form"
+
+#: line 305
+msgid "Edit Forms"
+msgstr "フォームの編集"
+
+#: line 306,trust-forms/admin/edit-list.php 1
+msgid "Add Form"
+msgstr "フォームの新規作成"
+
+#: line 307
+msgid "Entries"
+msgstr "投稿"
+
+#: line 899,1274
+msgid "All"
+msgstr "すべて"
+
+#: line 900
+msgid "New"
+msgstr "新規"
+
+#: line 901
+msgid "Read"
+msgstr "既読"
+
+#: line 902,1276
+msgid "Trash"
+msgstr "ゴミ箱"
+
+#: line 963,970,979,987
+msgid "View"
+msgstr "閲覧"
+
+#: line 964,972,980,988,1073
+msgid "Move to Read"
+msgstr "ステータスを既読にする"
+
+#: line 971,988
+msgid "Move to New"
+msgstr "ステータスを新規に戻す"
+
+#: line 965,972,981,989,1074,1292,1365
+msgid "Move to Trash"
+msgstr "ゴミ箱へ移動する"
+
+#: line 995,1299,1370
+msgid "Restore"
+msgstr "復元"
+
+#: line 996,1300,1371
+msgid "Delete Permanently"
+msgstr "完全に削除する"
+
+#: line 1039
+msgid "Entry Date"
+msgstr "投稿日時"
+
+#: line 1291
+msgid "Edit"
+msgstr "編集"
+
+#: line 1335
+msgid "Title"
+msgstr "タイトル"
+
+#: line 1336,1792
+msgid "Date"
+msgstr "日時"
+
+#: line 2099
+msgid "Please fill required field"
+msgstr "必須項目を入力して下さい"
+
+#: line 2100
+msgid "Please enter by using Japanese hiragana"
+msgstr "ひらがなで入力して下さい"
+
+#: line 2101
+msgid "Please enter more than __minlength__ charactors"
+msgstr "__minlength__ 文字以上で入力して下さい"
+
+#: line 2102
+msgid "Please enter within __maxlength__ charactors"
+msgstr "__maxlength__文字以下で入力して下さい"
+
+#: line 2103
+msgid "Please enter more than __minlength__ within __maxlength__ charactors"
+msgstr "__minlength__文字以上 __maxlength__文字以下で入力して下さい"
+
+#: line 2104
+msgid "Please enter by using multibyte charactor"
+msgstr "全角で入力して下さい"
+
+#: line 2105
+msgid "Please enter by using English"
+msgstr "半角英語で入力して下さい"
+
+#: line 2106
+msgid "Please enter by using number"
+msgstr "半角数字で入力して下さい"
+
+#: line 2107
+msgid "Please enter by using Japanese katakana"
+msgstr "カタカナで入力して下さい"
+
+#: line 2108
+msgid "Please enter by using English or number"
+msgstr "半角英数字で入力して下さい"
+
+#: line 2109
+msgid "Please enter by using English or number or code"
+msgstr "半角英数または記号で入力して下さい"
+
+########## trust-forms/admin/entry.php ###########
+#: line 3
+msgid "Entry"
+msgstr "投稿"
+
+#: line 20
+msgid "Entry Note"
+msgstr "メモ"
+
+#: line 36
+msgid "Add Note"
+msgstr "メモに追記する"
+
+########## trust-forms/admin/make-form.php ###########
+#: line 8,325
+msgid "Please insert Copy and paste the tag on the right into page or post"
+msgstr "右のタグをコピー＆ペーストして投稿またはページに挿入して下さい"
+
+#: line 10
+msgid "Form Title"
+msgstr "フォーム名"
+
+#: line 15
+msgid "Standard Field"
+msgstr "フィールド"
+
+#: line 16
+msgid "Advanced Field"
+msgstr "Advanced Field"
+
+#: line 28,38
+msgid "Textbox"
+msgstr "テキストボックス"
+
+#: line 81,91
+msgid "Textarea"
+msgstr "テキストエリア"
+
+#: line 117,129
+msgid "Checkbox"
+msgstr "チェックボックス"
+
+#: line 149,161
+msgid "Radio"
+msgstr "ラジオボタン"
+
+#: line 182,192
+msgid "Selectbox"
+msgstr "セレクトボックス"
+
+#: line 39,92,138,170,204
+msgid "attribute"
+msgstr "属性"
+
+#: line 42
+msgid "size"
+msgstr "size"
+
+#: line 43
+msgid "maxlength"
+msgstr "maxlength"
+
+#: line 44,97,141,173,207
+msgid "class"
+msgstr "class"
+
+#: line 46,99,133,165,199
+msgid "validation"
+msgstr "入力チェック"
+
+#: line 49,102,136,168,202
+msgid "required"
+msgstr "必須"
+
+#: line 50,103
+msgid "number of characters"
+msgstr "文字数"
+
+#: line 53,106
+msgid "min"
+msgstr "最小値"
+
+#: line 54,107
+msgid "max"
+msgstr "最大値"
+
+#: line 57
+msgid "characters"
+msgstr "半角文字チェック"
+
+#: line 60
+msgid "only alphabet"
+msgstr "半角英字のみ"
+
+#: line 61
+msgid "only numeric"
+msgstr "半角数字のみ"
+
+#: line 62
+msgid "only alphanumeric"
+msgstr "半角英数字のみ"
+
+#: line 63
+msgid "only alphanumeric and code"
+msgstr "半角英数記号のみ"
+
+#: line 66
+msgid "multibyte characters"
+msgstr "全角文字チェック"
+
+#: line 69
+msgid "all multibyte"
+msgstr "全角文字のみ"
+
+#: line 70
+msgid "only katakana"
+msgstr "カタカナのみ"
+
+#: line 71
+msgid "only hiragana"
+msgstr "ひらがなのみ"
+
+#: line 95
+msgid "rows"
+msgstr "rows"
+
+#: line 96
+msgid "cols"
+msgstr "cols"
+
+#: line 121,130,153,162
+msgid "option value"
+msgstr "オプション値"
+
+#: line 185,193
+msgid "selectbox value"
+msgstr "セレクトボックスの値"
+
+#: line 195
+msgid "default"
+msgstr "デフォルト値"
+
+#: line 197
+msgid "value"
+msgstr "値"
+
+#: line 224
+msgid "Input Screen"
+msgstr "入力画面"
+
+#: line 225
+msgid "Confirm Screen"
+msgstr "確認画面"
+
+#: line 226
+msgid "Finsh Screen"
+msgstr "完了画面"
+
+#: line 230
+msgid "CSS Editor"
+msgstr "CSSエディタ"
+
+#: line 231
+msgid "Require Mark"
+msgstr "必須マーク"
+
+#: line 238,269,300
+msgid "Please Edit Text"
+msgstr "テキストを入力して下さい"
+
+#: line 243
+msgid "Drag and Drop Form Element"
+msgstr "フォーム要素をドラッグ・アンド・ドロップして下さい"
+
+#: line 249
+msgid "Confirm"
+msgstr "確認する"
+
+#: line 255
+msgid "button text"
+msgstr "ボタンの表示テキスト"
+
+#: line 256
+msgid "button image"
+msgstr "ボタンのイメージ画像"
+
+#: line 256,286,287
+msgid "Select File"
+msgstr "画像を選択する"
+
+#: line 256,286,287
+msgid "restore to button"
+msgstr "ボタンに戻す"
+
+#: line 277
+msgid "return"
+msgstr "戻る"
+
+#: line 278
+msgid "send"
+msgstr "送信"
+
+#: line 284
+msgid "return button text"
+msgstr "戻るボタンのテキスト"
+
+#: line 285
+msgid "send button text"
+msgstr "送信ボタンのテキスト"
+
+#: line 286
+msgid "return button image"
+msgstr "戻るボタンの画像"
+
+#: line 287
+msgid "send button image"
+msgstr "送信ボタンの画像"
+
+#: line 307
+msgid "Admin Mail"
+msgstr "管理者宛メール"
+
+#: line 316
+msgid "From"
+msgstr "From"
+
+#: line 317
+msgid "to"
+msgstr "to"
+
+#: line 318
+msgid "cc"
+msgstr "cc"
+
+#: line 319
+msgid "bcc"
+msgstr "bcc"
+
+#: line 320
+msgid "Subject"
+msgstr "件名"
+
+#: line 327,336
+msgid "Save Changes"
+msgstr "更新"
+
+#: line 342
+msgid "require text"
+msgstr "必須マーク用テキスト"
+
+#: line 343
+msgid "require image"
+msgstr "必須マーク用画像"
+
+########## trust-forms/admin/entries-list.php ###########
+#: line 10
+msgid "Please select Form"
+msgstr "フォームを選択して下さい"
+
+########## trust-forms/admin/entries-list.php ###########
+#: line 19
+msgid "Item moved to the New."
+msgstr "項目のステータスを新規に変更しました"
+
+#: line 22
+msgid "Item moved to the Read."
+msgstr "項目のステータスを既読に変更しました"
+

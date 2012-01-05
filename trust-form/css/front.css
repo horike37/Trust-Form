@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+div.contact-form {
+	height: auto;
+	width:350px;
+}
+
+p.message-container{
+	padding: 7px;
+}
+
+div.contact-form table {
+}
+
+div.contact-form table th,
+div.contact-form table td {
+    white-space: nowrap;
+    padding: 10px 30px 10px 30px;
+    border-bottom: solid 1px #C0C0C0;
+}
+
+p.submit-container {
+    text-align: center;
+}
+
+div.submessage {
+	font-size: 80%;
+}
+
+span.require {
+	margin-left:3px;
+	color:red;
+}
+
+div.error {
+    color:red;
+}
