@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* 
+ * @Style Name: Simple
+ * @Version: 1.0
+ * 
+ */
+
+
+/* ======================================
+
+	 Reset 
+
+====================================== */
+
+div#trust-form.contact-form ul {
+    margin: 0;
+    padding: 0;
+}
+
+div#trust-form.contact-form li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#trust-form.contact-form table,
+div#trust-form.contact-form table th,
+div#trust-form.contact-form table td {
+    border: none;  
+}
+
+/* reset form element style*/
+div.contact-form input, 
+div.contact-formbutton, 
+div.contact-formselect, 
+div.contact-formtextarea {
+    margin: 0;
+    outline: none;  
+}
+div#trust-form.contact-form input,
+div#trust-form.contact-form select {
+    vertical-align:middle;
+  
+}
+
+/* ======================================
+
+	 Trust Form Style
+
+====================================== */
+
+div#trust-form.contact-form{
+    width:100%;
+    height: auto;
+
+
+}
+
+div#trust-form.contact-form table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+div#trust-form.contact-form table th {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    vertical-align: top;
+    font-weight: bold;
+
+}
+
+div#trust-form.contact-form table td {
+	padding: 10px;
+    border-bottom: 1px solid #ccc;
+	text-align: left;
+    vertical-align: middle;
+
+    
+}
+div#trust-form.contact-form table tr:hover{
+	background: #f4f4f4;
+}
+
+div#trust-form.contact-form p.submit-container {
+	text-align: center;
+}
+
+div#trust-form.contact-form div.submessage {
+    font-size: 80%;
+    font-weight: normal;
+}
+
+div#trust-form.contact-form span.require {
+    margin-left:3px;
+    color: #e55a3b;
+}
+
+div#trust-form.contact-form div.error {
+    color: #e55a3b;
+}
+
+
+div#trust-form.contact-form input[type="checkbox"],
+div#trust-form.contact-form input[type="radio"] {
+    margin-right: 3px;
+}

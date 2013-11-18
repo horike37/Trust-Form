@@ -1,5 +1,3 @@
-msgid ""
-msgstr ""
 "Project-Id-Version: Trust Forms\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-19 22:01+0900\n"
@@ -132,6 +130,10 @@ msgstr ""
 msgid "Please enter by using English or number or code"
 msgstr ""
 
+msgid "The format of the e-mail address is invalid"
+msgstr ""
+
+
 ########## trust-forms/admin/entry.php ###########
 #: line 3
 msgid "Entry"
@@ -263,7 +265,7 @@ msgid "cols"
 msgstr ""
 
 #: line 121,130,153,162
-msgid "option value"
+msgid "Select"
 msgstr ""
 
 #: line 185,193
@@ -386,19 +388,92 @@ msgstr ""
 msgid "require image"
 msgstr ""
 
+#: line 214
+msgid "E-Mail"
+msgstr ""
+
+msgid "Auto-reply Mail"
+msgstr ""
+
+msgid "use auto reply mail"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "[FORM DATA] contain a form data"
+msgstr ""
+
+msgid "Thank you for your contact!\nWe will send an email to you from the person in charge.\n\n[FORM DATA]\n\n-----\nSignature"
+msgstr ""
+
 ########## trust-forms/admin/entries-list.php ###########
 
 #: line 10
 msgid "Please select Form"
 msgstr ""
 
-########## trust-forms/admin/entries-list.php ###########
-
 #: line 19
 msgid "Item moved to the New."
-msgstr ""
+msgid_plural "%s items moved to the New."
+msgstr[0] ""
 
 #: line 22
 msgid "Item moved to the Read."
+msgid_plural "%s items moved to the Read."
+msgstr[0] ""
+
+msgid "CSV Download"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Akismet Configuration"
+msgstr ""
+
+msgid "Don't configuration"
+msgstr ""
+
+msgid "Back to post list"
+msgstr ""
+
+msgid "Change Status"
+msgstr ""
+
+msgid "Duplicate"
+msgstr ""
+
+msgid "Copy of %s"
+msgstr ""
+
+msgid "Item moved to the Trash."
+msgstr ""
+
+msgid "%d items moved to the Trash."
+msgstr ""
+
+msgid "Item restored from the Trash."
+msgstr ""
+
+msgid "%d items restored from the Trash."
+msgstr ""
+
+msgid "Item duplicated."
+msgstr ""
+
+msgid "%d items duplicated."
+msgstr ""
+
+msgid "Trust Form is in need of your support. You will be able to better this plug-in your donation."
+msgstr ""
+
+msgid "Other Setting"
+msgstr ""
+
+msgid "The e-mail mismatch"
+msgstr ""
+
+msgid "Re-entering E-mail"
 msgstr ""
 

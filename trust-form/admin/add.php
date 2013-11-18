@@ -10,3 +10,4 @@ if( isset($_POST['action']) && $_POST['action'] === 'save' ) {
 <h2><?php echo esc_html( __( 'Trust Form', TRUST_FORM_DOMAIN ) ); ?></h2>
 <?php require_once ( $this->admin_dir. '/make-form.php' ); ?>
 </div>
+<?php require_once ( $this->admin_dir. '/paypal.php' ); ?>

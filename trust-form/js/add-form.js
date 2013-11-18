@@ -7,6 +7,7 @@ var addTrustForm,TR_element_count = 0;
 			var l,z,v,x="",s,m;
 			
 			postboxes.add_postbox_toggles("trustform");
+			a('.if-js-closed').removeClass('if-js-closed').addClass('closed');
 
 			a('#tab').tabs({ fx: { duration: 'fast', opacity: 'toggle' } });
 			
@@ -55,6 +56,19 @@ var addTrustForm,TR_element_count = 0;
 				a("#require-mark-content > span").html(a(this).val());
 					addTrustForm.setRequireMark(a);
 			});
+			//自動返信メール部分の開閉
+			if ( a("input[name=user_mail_y]").is(":checked") ) {
+				a("#reply-table").css("display", "block");
+			} else {
+				a("#reply-table").css("display", "none");
+			}
+			a("input[name=user_mail_y]").on('click', function(){
+				if ( a("input[name=user_mail_y]").is(":checked") ) {
+					a("#reply-table").show();
+				} else {
+					a("#reply-table").hide();
+				}
+			});
 
 			addTrustForm.setup(a);
 
@@ -66,7 +80,7 @@ var addTrustForm,TR_element_count = 0;
                 zIndex : 5,
                 containment : "document",
                 stop : function(e, dg){
-              	    a("#setting-form > tbody > tr").removeClass("form-element");
+                    a("#setting-form > tbody > tr").removeClass("form-element");
                     a("#setting-form > tbody > tr > .element-title").remove();
                     a("#setting-form > tbody > tr > .setting-element-title").css("visibility", "visible");
                     a("#setting-form > tbody > tr > .setting-element-discription").css("visibility", "visible");
@@ -91,7 +105,9 @@ var addTrustForm,TR_element_count = 0;
 			//各要素の編集メニューを表示させるクリックイベント
 			a(".edit-button").live("click", function(){
 				var p = a(this).nextAll(".text-edit-content");
+				var hi = a(this).closest('td').height();
 				p.toggleClass('display-out').draggable();
+				a(this).closest('.edit-element-container').height(hi);
 				a(".del-icon").live("click", function(){
 					p.addClass('display-out');
 				});
@@ -233,7 +249,6 @@ var addTrustForm,TR_element_count = 0;
 			
 			//trエレメントを編集モードにする
 			a('#setting-form').find('tr').bind('click', function(){
-console.log('aaaa');
 				a("#setting-form > tbody > tr").removeClass("element-hover-edit").children(".edit-element-container").css("display", "none");
 				a(this).addClass("element-hover-edit");
 				a(this).children(".setting-element-editor").css("display", "block");
@@ -380,7 +395,7 @@ console.log('aaaa');
 				opacity : 0.7,
 				cancel: "#first-setting-info",
 				helper : function() {
-					return a('<div>');
+					return a('<tr><td></td><td></td></tr>');
 				},
 				sort : function() {
 					a(".sort-hover").html(a('<td colspan="2" class="sort-hover"></td>'));
@@ -428,6 +443,10 @@ console.log('aaaa');
 						//name属性を付加
 						if ( a(ui.item).find(".setting-element-discription").find('input').attr('type') != 'checkbox' ) {
 							a(ui.item).find(".setting-element-discription").find('input,select,textarea').attr('name',"element-"+TR_element_count);
+							a(ui.item).find("input[name=akismet-config]").attr( 'name', 'akismet-config-element-'+ TR_element_count);
+							a(ui.item).find("input[name=textbox-character]").attr( 'name', 'textbox-character-element-'+ TR_element_count);
+							a(ui.item).find("input[name=textbox-multi-character]").attr( 'name', 'textbox-multi-character-element-'+ TR_element_count);
+
 						} else {
 							a(ui.item).find(".setting-element-discription").find('input').attr('name',"element-"+TR_element_count+"[]");
 						}
@@ -450,7 +469,7 @@ console.log('aaaa');
 			);
 			
 			//input form 上部のHTMLに対するアウタークリック
-			a('#message-container-input').outerClick(function(){
+/*			a('#message-container-input').outerClick(function(){
 				if (a(this).children("textarea").length && d === 'stop' ) {
 					if (a(this).children("textarea").val()){
 						v = a(this).children("textarea").val();
@@ -496,7 +515,7 @@ console.log('aaaa');
 				}
 				b = 'stop';
 			});
-			
+*/
 			//input form 上部のHTMLに対するクリックイベント（初期メッセージ）
 			a("#info-message-input").bind("click",function(){
 				d = 'start';
@@ -534,8 +553,9 @@ console.log('aaaa');
 			a("#message-container-input,#message-container-confirm,#message-container-finish").bind("click",function(){
 				if(!a(this).children("textarea").length) {
 					v = a(this).html();
-					v = v.replace(/<br>/g, "\r\n");
+//					v = v.replace(/<br>/g, "\r\n");
 					a(this).html(a('<textarea>', {cols:40,value:v}));
+					a(this).children('textarea').html(a(this).children('textarea').val());
 					a(this).children('textarea').bind('textchange', function(){
 						a(this).html(a(this).val());
 					});
@@ -644,7 +664,7 @@ console.log('aaaa');
 			});
 			
 			//confirm formサブミットボタンの☓ボタン押下時。編集状態を解除する
-			a("#finish-button").find(".del-icon").click(function(){
+			a("#finish-button").next().find(".del-icon").click(function(){
 				if (a(this).css("display") === "block" && p === 'stop') {
 					a(".submit-element-container").css("display", "none");
 					a(".submit-container").removeClass("element-hover-edit");
@@ -662,7 +682,7 @@ console.log('aaaa');
 			
 			//confirm returnボタンのメッセージ変更。画像の場合はオルト
 			a("input[name=returnbutton-text]").bind("textchange", function(){
-				if (a("input[name=return-to-input]").attr("type") === "button") {
+				if (a("input[name=return-to-input]").attr("type") === "submit") {
 					a("input[name=return-to-input]").val(a(this).val());
 				}else{
 					a("input[name=return-to-input]").prop("alt", a(this).val());

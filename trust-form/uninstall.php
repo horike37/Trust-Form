@@ -5,13 +5,13 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 
 function trust_form_delete_plugin() {
 
-	$posts = get_posts( array(
-		'numberposts' => -1,
-		'post_type' => 'trust-form',
-		'post_status' => 'any' ) );
+//	$posts = get_posts( array(
+//		'numberposts' => -1,
+//		'post_type' => 'trust-form',
+//		'post_status' => 'any' ) );
 
-	foreach ( $posts as $post )
-		wp_delete_post( $post->ID, true );
+//	foreach ( $posts as $post )
+//		wp_delete_post( $post->ID, true );
 
 }
 

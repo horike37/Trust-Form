@@ -43,6 +43,15 @@ input.trust-form-title {
 	border-style:dotted;
 }
 
+#tr-notice {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    z-index: 100;
+}
+
 ul.toolbar {
     background-color: #222222;
     background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
@@ -257,6 +266,10 @@ table#standard-form-element-list td ul {
 	border: 2px dotted #C0C0C0;
 }
 
+#advanced-sortables {
+	min-height:280px;
+}
+
 /*----------- entry.php ------------------*/
 #entry-contaier {
 	margin-top: 20px;
@@ -328,6 +341,9 @@ table#standard-form-element-list td ul {
 	border-bottom: 1px #E3E3E3 dotted;
 }
 
+.note-detail p {
+	line-height:1.4;
+}
 /*----------- entries-list ------------------*/
 
 #entry-form {
@@ -338,4 +354,40 @@ tr.read {
 	background-color: #C0C0C0;
 }
 
+#entry-contaier h3.read {
+	background-color: #C0C0C0;
+}
 
+#entry-contaier h3.read span {
+	color: black;
+}
+
+#paypal-footer {
+	background: #f0f8ff;
+	border: 1px solid #CCC;
+	margin: 40px 10px 0 0;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px;
+}
+
+#paypal-footer p {
+	margin:1px 0 5px 7px;
+}
+
+.metabox-holder:after,
+#entry-contaier:after{
+  content: "."; 
+  display: block; 
+  height: 0; 
+  font-size:0;	
+  clear: both; 
+  visibility:hidden;
+}
+	
+.metabox-holder,#entry-contaier  {display: inline-block;} 
+
+/* Hides from IE Mac */
+* html .metabox-holder, * html #entry-contaier {height: 1%;}
+.metabox-holder, #entry-contaier {display:block;}

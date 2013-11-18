@@ -10,16 +10,16 @@ if ( isset( $_GET['message'] ) ) {
 	}
 	
 	if ( 'entry_untrash' == $_GET['message'] )
-		$updated_message = __( "Item restored from the Trash." );
+		$updated_message = sprintf( _n( 'Item restored from the Trash.', '%s items restored from the Trash.', $_REQUEST['untrashed'] ), number_format_i18n( $_REQUEST['untrashed'] ) );
 
 	if ( 'entry_deleted' == $_GET['message'] )
-		$updated_message = __( "Item permanently deleted." );
+		$updated_message = sprintf( _n( 'Item permanently deleted.', '%s items permanently deleted.', $_REQUEST['deleted'] ), number_format_i18n( $_REQUEST['deleted'] ) );
 		
 	if ( 'entry_new' == $_GET['message'] )
-		$updated_message = __( 'Item moved to the New.', TRUST_FORM_DOMAIN );
+		$updated_message = sprintf( _n( 'Item moved to the New.', '%s items moved to the New.', $_REQUEST['new'], TRUST_FORM_DOMAIN ), number_format_i18n( $_REQUEST['new'] ) );
 
 	if ( 'entry_read' == $_GET['message'] )
-		$updated_message = __( 'Item moved to the Read.', TRUST_FORM_DOMAIN );
+		$updated_message = sprintf( _n( 'Item moved to the Read.', '%s items moved to the Read.', $_REQUEST['read'], TRUST_FORM_DOMAIN ), number_format_i18n( $_REQUEST['read'] ) );
 }
 ?>
 <div class="wrap">
@@ -41,6 +41,7 @@ if ( isset( $_GET['action'] ) && 'edit' == $_GET['action'] ) {
 } 
 ?>
 </div>
+<?php require_once ( $this->admin_dir. '/paypal.php' ); ?>
 
 
 

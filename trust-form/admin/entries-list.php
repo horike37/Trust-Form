@@ -2,6 +2,9 @@
 $form_id = -1;
 if( isset($_GET['form']) && is_numeric($_GET['form']) )
 	$form_id = $_GET['form'];
+	
+$status = isset($_GET['status']) ? $_GET['status'] : 'all';
+
 $list_table = new Trust_Form_Entries_List_Table($form_id);
 ?>
 <div class="trust-form-toolbar">
@@ -29,6 +32,11 @@ $list_table->views();
 <?php //$list_table->search_box( __( 'Search Entries', TRUST_FORM_DOMAIN ), 'trust-form-search-entries' ); ?>
 <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"; />
 <input type="hidden" name="form" value="<?php echo $form_id ?>"; />
-<?php $list_table->display(); ?>
+<?php $list_table->display();
+if ( $status != 'trash' ) :
+ ?>
+<p><input type="submit" class="button-primary" name="csv-dl" value="<?php echo esc_html(__('CSV Download', TRUST_FORM_DOMAIN)); ?>" /></p>
+<input type="hidden" name="type" value="<?php echo esc_html($status); ?>" />
+<?php endif; ?>
 </form>
 <?php endif; ?>

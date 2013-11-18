@@ -1,9 +1,9 @@
 === Trust Form ===
-Contributors: Horike Takahiro
+Contributors: horike
 Tags:  form, contact form, contact
 Requires at least: 3.3
-Tested up to: 3.3
-Stable tag: 1.0-alpha
+Tested up to: 3.6.1
+Stable tag: 1.8.3
 
 Trust Form is a contact form with confirmation screen and mail and data base support.
 
@@ -29,6 +29,8 @@ Please contact to me.
 = Contributors =
 * [Horike Takahiro](http://twitter.com/horike37)
 * [Seguchi Rie](http://5dg.biz) making the admin screen icon
+* webnist Bug fixes
+* [Aihara Chieko](http://webourgeon.com/) making the default css
 
 == Installation ==
 
@@ -47,4 +49,53 @@ Please contact to me.
 == Changelog ==
 = 1.0-alpha =
 * alpha version first release. 
-
+= 1.0.1-alpha =
+* Bug fixes and admin mail add [from name]. 
+= 1.0.1 =
+* Add Auto reply mail
+* Add CSV Download
+* Add HTML templete
+= 1.1 =
+* Add Akismet spam filtering
+= 1.3.8 =
+* When you write define( 'TRUST_FORM_DB_SUPPORT', false ); in wp-config.php, don't store in DB.
+= 1.4.0 =
+* Add form duplicate
+= 1.5.0 =
+* Set label for checkbox and radio.
+* Changed template system.
+* add an export capability.
+* Fixed a bug that does not work with PHP5.4.
+* Changed the way to hold answer data.
+* notice error fixed on confirm screen.
+* Fixed a bug that unable to re-edit the input,confirm,finish Screen HTML dialog box.
+* Fixed a bug that a contact is sent in double.
+= 1.5.1 =
+* Add payola link.
+= 1.5.2 =
+* register active hook does not fired to when update.. fixed.
+= 1.5.3 =
+* Created a bulk action for posts.
+= 1.5.4 =
+* Fixed a bug in the data disappears upgrade from 1.4.2.
+= 1.5.5 =
+* Fixed a bug update 1.5.4
+= 1.5.6 =
+* Fixed a bug for duplicate form.
+= 1.5.7 =
+* Fixed a bug for admin screen.
+= 1.6.0 =
+* Remove the function of CSS EDITOR. But you can restore this function when you write define( 'TRUST_FORM_DEFAULT_STYLE', false ); in wp-config.php,
+* Add default css by making [Aihara Chieko](http://webourgeon.com/)
+= 1.7.0 =
+* Write `[title]` of form element on From Name, From, mail body. Then replace submit content from the form.
+= 1.7.1 =
+* Add filter hook for validate message.
+= 1.8.0 =
+* Default css corresponding to responsive by making [Aihara Chieko](http://webourgeon.com/)
+* Add e-mail re-entering.
+* Add other setting.
+= 1.8.1 =
+* Fixd a bug that warning error on finish screen.
+= 1.8.3 =
+* Add filter
