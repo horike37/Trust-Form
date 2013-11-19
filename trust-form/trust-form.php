@@ -2677,7 +2677,7 @@ class Trust_Form_API {
 	public function duplicate( $form_id ) {
 		$post = get_post( $form_id );
 
-		$post_title = apply_filters( 'trust_form_duplicate_form_title', sprintf( __( 'Copy of %s', TRUST_FORM_DOMAIN ), $post->post_title ));
+		$post_title = apply_filters( 'trust_form_duplicate_form_title', sprintf( __( 'Copy of %s', TRUST_FORM_DOMAIN ), $post->post_title, $form_id ));
 
 		$new = array(
 		    'post_author' => $post->post_author,
