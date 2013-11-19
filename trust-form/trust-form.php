@@ -47,6 +47,7 @@ class Trust_Form {
 	private $absolute_lang_path;
 	private $form_id;
 	private $form_title = 'trust-form';
+	private $api;
 	
 	/* ==================================================
 	 * construct
@@ -66,6 +67,7 @@ class Trust_Form {
 		$this->edit_page = TRUST_FORM_DOMAIN . '-edit';
 		$this->add_page = TRUST_FORM_DOMAIN . '-add';
 		$this->entries_page = TRUST_FORM_DOMAIN . '-entries';
+		$this->api = new Trust_Form_API();
 		
 		load_plugin_textdomain( TRUST_FORM_DOMAIN, $this->absolute_lang_path, $this->relative_lang_path );
 		
@@ -132,75 +134,7 @@ class Trust_Form {
 								'can_export' => true,
 								 ) );
 	}
-	
-	/* ==================================================
-	 * duplicate form
-	 * @param	form_id
-	 * @return	form_id or wp_die 
-	 * @since	1.8.4
-	 */
-	public function duplicate( $form_id ) {
-		$post = get_post( $form_id );
 
-		$post_title = apply_filters( 'trust_form_duplicate_form_title', sprintf( __( 'Copy of %s', TRUST_FORM_DOMAIN ), $post->post_title ));
-
-		$new = array(
-		    'post_author' => $post->post_author,
-		    'post_date' => $post->post_date,
-		    'post_date_gmt' => $post->post_date_gmt,
-		    'post_content' => $post->post_content,
-		    'post_title' => $post_title,
-		    'post_excerpt' => $post->post_excerpt,
-		    'post_status' => $post->post_status,
-		    'comment_status' => $post->comment_status,
-		    'ping_status' => $post->ping_status,
-		    'post_password' => $post->post_password,
-		    'post_name' => $post->post_name,
-		    'to_ping' => $post->to_ping,
-		    'pinged' => $post->pinged,
-		    'post_modified' => $post->post_modified,
-		    'post_modified_gmt' => $post->post_modified_gmt,
-		    'post_content_filtered' => $post->post_content_filtered,
-		    'post_parent' => $post->post_parent,
-		    'guid' => $post->guid,
-		    'menu_order' => $post->menu_order,
-		    'post_type' => $post->post_type,
-		    'post_mime_type' => $post->post_mime_type,
-		    'comment_count' => $post->comment_count
-		);
-		if ( !$new_id = wp_insert_post($new) )
-		    wp_die( __('Error in duplicating.') );
-		
-		$data = array( 
-		    		'name' => get_post_meta( $form_id, 'name' ),
-		    		'attention' => get_post_meta( $form_id, 'attention' ),
-		    		'type' => get_post_meta( $form_id, 'type' ),
-		    		'validation' => get_post_meta( $form_id, 'validation' ),
-		    		'attr' => get_post_meta( $form_id, 'attr' ),
-		    		'admin_mail' => get_post_meta( $form_id, 'admin_mail' ),
-		    		'user_mail' => get_post_meta( $form_id, 'user_mail' ),
-		    		'form_admin_input' => get_post_meta( $form_id, 'form_admin_input' ),
-		    		'form_admin_confirm' => get_post_meta( $form_id, 'form_admin_confirm' ),
-		    		'form_admin_finish' => get_post_meta( $form_id, 'form_admin_finish' ),
-		    		'form_front' => get_post_meta( $form_id, 'form_front' ),
-		    		'config' => get_post_meta( $form_id, 'config' ),
-		    		'other_setting' => get_post_meta( $form_id, 'other_setting' )
-		    	);
-		update_post_meta( $new_id, 'name', $data['name'][0] );
-		update_post_meta( $new_id, 'attention', $data['attention'][0] );
-		update_post_meta( $new_id, 'type', $data['type'][0] );
-		update_post_meta( $new_id, 'validation', $data['validation'][0] );
-		update_post_meta( $new_id, 'attr', $data['attr'][0] );
-		update_post_meta( $new_id, 'admin_mail', $data['admin_mail'][0] );
-		update_post_meta( $new_id, 'user_mail', $data['user_mail'][0] );
-		update_post_meta( $new_id, 'form_admin_input', $data['form_admin_input'][0] );
-		update_post_meta( $new_id, 'form_admin_confirm', $data['form_admin_confirm'][0] );
-		update_post_meta( $new_id, 'form_admin_finish', $data['form_admin_finish'][0] );
-		update_post_meta( $new_id, 'form_front', $data['form_front'][0] );
-		update_post_meta( $new_id, 'config', $data['config'][0] );
-		update_post_meta( $new_id, 'other_setting', $data['other_setting'][0] );
-		return $new_id;
-	 }
 
 	/* ==================================================
 	 * do action edit page admin init
@@ -245,7 +179,7 @@ class Trust_Form {
 				case 'duplicate':
 					$duplicated = 0;
 					foreach( (array) $form_ids as $form_id ) {
-						$this->duplicate($form_id);
+						$this->api->duplicate($form_id);
 						$duplicated++;
 					}
 					$sendback = add_query_arg( array('duplicated' => $duplicated, 'ids' => join(',', $form_ids), 'message' => 'form_duplicate' ), $sendback );
@@ -2731,4 +2665,76 @@ class Trust_Form_Other_Setting {
 	}
 }
 new Trust_Form_Other_Setting();
+
+class Trust_Form_API {
+
+	/* ==================================================
+	 * duplicate form
+	 * @param	form_id
+	 * @return	form_id or wp_die 
+	 * @since	1.8.4
+	 */
+	public function duplicate( $form_id ) {
+		$post = get_post( $form_id );
+
+		$post_title = apply_filters( 'trust_form_duplicate_form_title', sprintf( __( 'Copy of %s', TRUST_FORM_DOMAIN ), $post->post_title ));
+
+		$new = array(
+		    'post_author' => $post->post_author,
+		    'post_date' => $post->post_date,
+		    'post_date_gmt' => $post->post_date_gmt,
+		    'post_content' => $post->post_content,
+		    'post_title' => $post_title,
+		    'post_excerpt' => $post->post_excerpt,
+		    'post_status' => $post->post_status,
+		    'comment_status' => $post->comment_status,
+		    'ping_status' => $post->ping_status,
+		    'post_password' => $post->post_password,
+		    'post_name' => $post->post_name,
+		    'to_ping' => $post->to_ping,
+		    'pinged' => $post->pinged,
+		    'post_modified' => $post->post_modified,
+		    'post_modified_gmt' => $post->post_modified_gmt,
+		    'post_content_filtered' => $post->post_content_filtered,
+		    'post_parent' => $post->post_parent,
+		    'guid' => $post->guid,
+		    'menu_order' => $post->menu_order,
+		    'post_type' => $post->post_type,
+		    'post_mime_type' => $post->post_mime_type,
+		    'comment_count' => $post->comment_count
+		);
+		if ( !$new_id = wp_insert_post($new) )
+		    wp_die( __('Error in duplicating.') );
+		
+		$data = array( 
+		    		'name' => get_post_meta( $form_id, 'name' ),
+		    		'attention' => get_post_meta( $form_id, 'attention' ),
+		    		'type' => get_post_meta( $form_id, 'type' ),
+		    		'validation' => get_post_meta( $form_id, 'validation' ),
+		    		'attr' => get_post_meta( $form_id, 'attr' ),
+		    		'admin_mail' => get_post_meta( $form_id, 'admin_mail' ),
+		    		'user_mail' => get_post_meta( $form_id, 'user_mail' ),
+		    		'form_admin_input' => get_post_meta( $form_id, 'form_admin_input' ),
+		    		'form_admin_confirm' => get_post_meta( $form_id, 'form_admin_confirm' ),
+		    		'form_admin_finish' => get_post_meta( $form_id, 'form_admin_finish' ),
+		    		'form_front' => get_post_meta( $form_id, 'form_front' ),
+		    		'config' => get_post_meta( $form_id, 'config' ),
+		    		'other_setting' => get_post_meta( $form_id, 'other_setting' )
+		    	);
+		update_post_meta( $new_id, 'name', $data['name'][0] );
+		update_post_meta( $new_id, 'attention', $data['attention'][0] );
+		update_post_meta( $new_id, 'type', $data['type'][0] );
+		update_post_meta( $new_id, 'validation', $data['validation'][0] );
+		update_post_meta( $new_id, 'attr', $data['attr'][0] );
+		update_post_meta( $new_id, 'admin_mail', $data['admin_mail'][0] );
+		update_post_meta( $new_id, 'user_mail', $data['user_mail'][0] );
+		update_post_meta( $new_id, 'form_admin_input', $data['form_admin_input'][0] );
+		update_post_meta( $new_id, 'form_admin_confirm', $data['form_admin_confirm'][0] );
+		update_post_meta( $new_id, 'form_admin_finish', $data['form_admin_finish'][0] );
+		update_post_meta( $new_id, 'form_front', $data['form_front'][0] );
+		update_post_meta( $new_id, 'config', $data['config'][0] );
+		update_post_meta( $new_id, 'other_setting', $data['other_setting'][0] );
+		return $new_id;
+	 }
+}
 ?>
