@@ -4,7 +4,7 @@ Plugin Name: Trust Form
 Plugin URI: http://www.kakunin-pl.us/
 Description: Trust Form is a contact form with confirmation screen and mail and data base support.
 Author: horike takahiro
-Version: 1.8.3
+Version: 1.8.5
 Author URI: http://www.kakunin-pl.us/
 
 
@@ -37,7 +37,7 @@ if ( ! defined( 'TRUST_FORM_PLUGIN_DIR' ) )
 new Trust_Form();
 
 class Trust_Form {
-	private $version = '1.8.3';
+	private $version = '1.8.5';
 	private $edit_page;
 	private $entries_page;
 	private $base_dir;
@@ -458,12 +458,14 @@ class Trust_Form {
 	 * @since	1.0
 	 */
 	public function admin_menu() {
-		add_menu_page( __( 'Trust Form', TRUST_FORM_DOMAIN ), __( 'Trust Form', TRUST_FORM_DOMAIN ), 'edit_posts', $this->edit_page, array( &$this,'add_admin_edit_page' ), TRUST_FORM_PLUGIN_URL . '/images/menu-icon.png' );
-		add_submenu_page( $this->edit_page, __( 'Edit Forms', TRUST_FORM_DOMAIN ), __( 'Edit Forms', TRUST_FORM_DOMAIN ), 'edit_posts', $this->edit_page, array( &$this, 'add_admin_edit_page' ) );
-		add_submenu_page( $this->edit_page, __( 'Add Form', TRUST_FORM_DOMAIN ), __( 'Add Form', TRUST_FORM_DOMAIN ), 'edit_posts', $this->add_page, array( &$this, 'add_admin_add_page' ) );
+		$cap = apply_filters( 'trust_form_admin_menu_cap', 'edit_posts' );
+
+		add_menu_page( __( 'Trust Form', TRUST_FORM_DOMAIN ), __( 'Trust Form', TRUST_FORM_DOMAIN ), $cap, $this->edit_page, array( &$this,'add_admin_edit_page' ), TRUST_FORM_PLUGIN_URL . '/images/menu-icon.png' );
+		add_submenu_page( $this->edit_page, __( 'Edit Forms', TRUST_FORM_DOMAIN ), __( 'Edit Forms', TRUST_FORM_DOMAIN ), $cap, $this->edit_page, array( &$this, 'add_admin_edit_page' ) );
+		add_submenu_page( $this->edit_page, __( 'Add Form', TRUST_FORM_DOMAIN ), __( 'Add Form', TRUST_FORM_DOMAIN ), $cap, $this->add_page, array( &$this, 'add_admin_add_page' ) );
 
 		if ( !defined( 'TRUST_FORM_DB_SUPPORT' ) || TRUST_FORM_DB_SUPPORT !== false )
-			add_submenu_page( $this->edit_page, __( 'Entries', TRUST_FORM_DOMAIN ), __( 'Entries', TRUST_FORM_DOMAIN ), 'edit_posts', $this->entries_page, array( &$this, 'add_admin_entries_page' ) );
+			add_submenu_page( $this->edit_page, __( 'Entries', TRUST_FORM_DOMAIN ), __( 'Entries', TRUST_FORM_DOMAIN ), $cap, $this->entries_page, array( &$this, 'add_admin_entries_page' ) );
 	}
 
 	/* ==================================================
