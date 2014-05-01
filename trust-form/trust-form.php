@@ -282,39 +282,25 @@ class Trust_Form {
 				}
 			}
 
+			$mime_type = 'text/csv;charset=UTF-8';
 			if ( defined( 'TRUST_FORM_CSV_SJIS_SUPPORT' ) 
 			&& TRUST_FORM_CSV_SJIS_SUPPORT === true 
 			&& function_exists('mb_convert_variables') ) {
 				mb_convert_variables('SJIS', 'UTF-8', $csv_ti);
 				mb_convert_variables('SJIS', 'UTF-8', $csv);
+				$mime_type = 'text/csv;charset=Shift_JIS';
 			}
 
 			$file_name = 'result_'.time().'.csv';
-			$full_file_name = $this->plugin_dir . '/csv/' . $file_name;
-
-			$fp = fopen( $full_file_name, 'w' );
 
 			$csv = array_reverse($csv);
-			fputcsv( $fp, $csv_ti[0] );
+			header('Content-Disposition: inline; filename="'.$file_name.'"');
+			header('Content-Type: '.$mime_type);
+			
+			echo implode(',', $csv_ti[0]) . "\r\n";
 			foreach ($csv as $data) {
-				fputcsv($fp, $data);
+				echo implode(',', $data) . "\r\n";
 			}
-			fclose($fp);
-
-			$file_size = @filesize($full_file_name);
-			ini_set('zlib.output_compression','Off');
-			header("Pragma: public");
-			header("Expires: 0");
-			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-			header("Cache-Control: public");
-			header("Content-Description: File Transfer");
-			header("Content-Type: application/octet-stream ");
-			header("Content-Disposition: attachment; filename=".$file_name);
-			header("Content-Transfer-Encoding: binary");
-			header("Content-size: binary");
-			header("Content-Length: ".$file_size);
-			@readfile($full_file_name);
-			@unlink($full_file_name);
 			exit;
 		}
 		
