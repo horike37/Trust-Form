@@ -2168,6 +2168,7 @@ class Trust_Form_Front {
 		$body = apply_filters( 'tr_pre_auto_reply_mail_body', $body, $data['data'], $id );
 		
 		wp_mail( $to, $subject, $body );
+		do_action( 'trust_form_sent_auto_reply_mail', $data, $id, $to );
 	}
 
 	/* ==================================================
@@ -2208,6 +2209,7 @@ class Trust_Form_Front {
 		$headers .= $this->admin_mail[0]['cc'] != '' ? 'cc:' . $this->admin_mail[0]['cc'] . "\n" : '' ;
 		$headers .= $this->admin_mail[0]['bcc'] != '' ? 'bcc:' . $this->admin_mail[0]['bcc'] . "\n" : '' ;
 		wp_mail( apply_filters( 'trust_form_admin_mail_to', $this->admin_mail[0]['to'], $id ) , $subject, $body, $headers );
+		do_action( 'trust_form_sent_admin_mail', $data, $id );
 	}
 
 	public function wp_mail_from( $mail_from ) {
@@ -2338,6 +2340,9 @@ class Trust_Form_Front {
 						
 			}
 		}
+
+		$this->err_msg = apply_filters( 'trust_form_validate_error_messages', $this->err_msg, $this->id );
+
 		if ( empty($this->err_msg) ) {
 			return true;
 		} else {
