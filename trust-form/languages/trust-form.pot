@@ -423,6 +423,10 @@ msgid "Item moved to the Read."
 msgid_plural "%s items moved to the Read."
 msgstr[0] ""
 
+#: line 42
+msgid "CSV for Microsoft Excel."
+msgstr ""
+
 msgid "CSV Download"
 msgstr ""
 

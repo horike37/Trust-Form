@@ -37,6 +37,10 @@ if ( $status != 'trash' ) :
  ?>
 <p><input type="submit" class="button-primary" name="csv-dl" value="<?php echo esc_html(__('CSV Download', TRUST_FORM_DOMAIN)); ?>" /></p>
 <input type="hidden" name="type" value="<?php echo esc_html($status); ?>" />
+<label for="suite-excel">
+	<input type="checkbox" name="suite-excel" id="suite-excel" value="1" />
+	<?php _e( 'CSV for Microsoft Excel.', TRUST_FORM_DOMAIN ); ?>
+</label>
 <?php endif; ?>
 </form>
 <?php endif; ?>
