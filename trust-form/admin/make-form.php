@@ -420,7 +420,7 @@ function trustform_auto_reply_mail_meta_box() {
 $form_id = !isset( $_GET['form'] ) || !is_numeric($_GET['form']) ? '' : $_GET['form'] ;
 $user_mail = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $form_id, 'user_mail' ) ;
 ?>
-<p><input type="checkbox" name="user_mail_y" value="1" <?php if(isset($user_mail[0]['user_mail_y'])){checked($user_mail[0]['user_mail_y'], '1');} ?> /><?php _e("use auto reply mail", TRUST_FORM_DOMAIN); ?></p>
+<p><input type="checkbox" name="user_mail_y" value="1" <?php if(isset($user_mail[0]) && isset($user_mail[0]['user_mail_y'])){checked($user_mail[0]['user_mail_y'], '1');} ?> /><?php _e("use auto reply mail", TRUST_FORM_DOMAIN); ?></p>
 <form name="form2" method="post" action="">
 <table id="reply-table" class="form-table">
 <tr><th scope="row"><?php echo esc_html( __( 'From Name', TRUST_FORM_DOMAIN ) ); ?></th><td><input type="text" name="from_name2" size="56" value="<?php echo $user_mail != '' ? esc_html($user_mail[0]['from_name2']) : '' ; ?>"></td></tr>
