@@ -286,8 +286,8 @@ class Trust_Form {
 			if ( defined( 'TRUST_FORM_CSV_SJIS_SUPPORT' ) 
 			&& TRUST_FORM_CSV_SJIS_SUPPORT === true 
 			&& function_exists('mb_convert_variables') ) {
-				mb_convert_variables('SJIS', 'UTF-8', $csv_ti);
-				mb_convert_variables('SJIS', 'UTF-8', $csv);
+				mb_convert_variables('sjis-win', 'UTF-8', $csv_ti);
+				mb_convert_variables('sjis-win', 'UTF-8', $csv);
 				$mime_type = 'text/csv;charset=Shift_JIS';
 			}
 
@@ -297,9 +297,10 @@ class Trust_Form {
 			header('Content-Disposition: inline; filename="'.$file_name.'"');
 			header('Content-Type: '.$mime_type);
 			
-			echo implode(',', $csv_ti[0]) . "\r\n";
+			$csv_format = isset( $_REQUEST['suite-excel'] ) && $_REQUEST['suite-excel'] ? 'excel' : 'standard';
+			echo $this->create_csv_row( $csv_ti[0], $csv_format );
 			foreach ($csv as $data) {
-				echo implode(',', $data) . "\r\n";
+				echo $this->create_csv_row( $data, $csv_format );
 			}
 			exit;
 		}
@@ -1002,6 +1003,30 @@ jQuery(document).ready(function() {
 		return $found;
 	}
 
+	/* ==================================================
+	 * generating csv row data from array data
+	 * @param	$row_datas Array, $mode String
+	 * @return	String
+	 * @since	1.8.8
+	 */
+	private function create_csv_row( $row_datas, $mode = 'standard' ) {
+		if ( ! is_array( $row_datas ) ) { return $row_datas; }
+		foreach ( $row_datas as $key => $row_data ) {
+			if ( 'excel' == $mode ) {
+				if ( preg_match( '|^[\+\-\/0-9]+$|', $row_data ) || preg_match( '|^[\+\-\－\/０-９]+$|', $row_data ) ) {
+					$row_data = '=' . '"' . $row_data . '"';
+				}
+				if ( preg_match( '|^[0-9]+$|', $row_data ) || preg_match( '|^[０-９]+$|', $row_data ) ) {
+					$row_data = '=' . '"' . $row_data . '"';
+				}
+			}
+			if ( preg_match( '/[",\'\r\n]/', $row_data ) ) {
+				$row_datas[$key]= '"' . preg_replace( '/"/', '""', $row_data ) . '"';
+			}
+		}
+	
+		return implode( ',', $row_datas ) . "\n";
+	}
 }
 
 if ( !class_exists( 'WP_List_Table' ) ) {
