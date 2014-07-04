@@ -3,7 +3,7 @@ Contributors: horike
 Tags:  form, contact form, contact
 Requires at least: 3.3
 Tested up to: 3.8.3
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 
 Trust Form is a contact form with confirmation screen and mail and data base support.
 
@@ -103,3 +103,5 @@ Please contact to me.
 * Add Custom hooks.
 = 1.8.7 =
 * Delete CSV directory.
+= 1.8.8 =
+* some fix
