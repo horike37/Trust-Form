@@ -17,7 +17,7 @@ function trust_form_show_input() {
 EOT;
 
 	foreach ( $col_name as $key => $name ) {
-		$html .= '<tr><th scope="row"><div class="subject"><span class="content">'.$name.'</span>'.(isset($validate[$key]['required']) && $validate[$key]['required'] == 'true' ? '<span class="require">'.$config['require'].'</span>' : '' ).'</div><div class="submessage">'.$attention[$key].'</div></th><td><div>'.$trust_form->get_element( $key ).'</div>';
+		$html .= '<tr><th scope="row"><div class="subject"><span class="content">'.$name.'</span>'.(isset($validate[$key]['required']) && $validate[$key]['required'] == 'true' && isset( $config['require'] ) ? '<span class="require">'.$config['require'].'</span>' : '' ).'</div><div class="submessage">'.$attention[$key].'</div></th><td><div>'.$trust_form->get_element( $key ).'</div>';
 
 		$err_msg = $trust_form->get_err_msg($key);
 		if ( isset($err_msg) && is_array($err_msg) ) {
