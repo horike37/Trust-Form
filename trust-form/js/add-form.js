@@ -463,7 +463,13 @@ var addTrustForm,TR_element_count = 0;
 			var  d = 'stop',j = 'stop', b = 'stop';
 
 			//input form 上部のHTML,下部submitに対するホバー
+			/* changed by natasha
 			a("#info-message-input,#info-message-confirm,#info-message-finish,#message-container-input,#message-container-confirm,#message-container-finish,.submit-container").hover(
+				function(){a(this).addClass("element-hover");},
+				function(){a(this).removeClass("element-hover");}
+			);
+			*/
+			a("#info-message-input,#info-message-confirm,#info-message-finish,.submit-container").hover(
 				function(){a(this).addClass("element-hover");},
 				function(){a(this).removeClass("element-hover");}
 			);
@@ -550,6 +556,7 @@ var addTrustForm,TR_element_count = 0;
 			});
 			
 			//input form 上部のHTMLに対するクリックイベント
+			/* deleted by natasha
 			a("#message-container-input,#message-container-confirm,#message-container-finish").bind("click",function(){
 				if(!a(this).children("textarea").length) {
 					v = a(this).html();
@@ -561,6 +568,8 @@ var addTrustForm,TR_element_count = 0;
 					});
 				}
 			});
+			*/
+
 		},
 		setupButton: function(a){
 			var r = 'stop',p = "stop";

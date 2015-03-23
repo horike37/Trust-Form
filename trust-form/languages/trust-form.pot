@@ -157,7 +157,7 @@ msgid "Form Title"
 msgstr ""
 
 #: line 15
-msgid "Standard Field"
+msgid "Form Element"
 msgstr ""
 
 #: line 16
@@ -481,3 +481,9 @@ msgstr ""
 msgid "Re-entering E-mail"
 msgstr ""
 
+# added by natasha
+msgid "Please Input Text above the Form"
+msgstr ""
+
+msgid "Please Input Thanks Message"
+msgstr ""

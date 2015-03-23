@@ -233,9 +233,8 @@ table#standard-form-element-list {
 
 table#standard-form-element-list td {
     padding: 5px;
-    /*border: 1px #E3E3E3 solid;
-    border-width: 0 0 1px 1px;*/
-    text-align: center;
+    border: 1px #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
 }
 
 table#standard-form-element-list td ul {
@@ -391,3 +390,53 @@ tr.read {
 /* Hides from IE Mac */
 * html .metabox-holder, * html #entry-contaier {height: 1%;}
 .metabox-holder, #entry-contaier {display:block;}
+
+
+/* added by natasha */
+/*----------------------------
+	make-form
+----------------------------*/
+#element-container {
+	width: 240px!important;
+}
+#element-container .postbox {
+	min-width: inherit;
+}
+#standard-form .inside {
+	padding: 0 18px;	
+}
+.postbox .inside {
+	margin: 0;
+}
+#standard-form .handlediv {
+	display: none;
+}
+.element-title h4 {
+	left: 0;
+}
+.form-element {
+	border: none;
+}
+table#standard-form-element-list {
+	margin: 20px 0;
+}
+table#standard-form-element-list .element-title {
+	background: -moz-linear-gradient(top, #ffffff, #f6f6f6);
+	background: -ms-linear-gradient(top, #ffffff, #f6f6f6);
+	background: -webkit-linear-gradient(top, #ffffff, #f6f6f6);
+	background: linear-gradient(top, #ffffff, #f6f6f6);
+
+	/*background: #ECECEC;*/
+	border: 1px #E3E3E3 solid;
+	height: 30px;
+}
+table#standard-form-element-list .element-title h4 {
+	width: 190px;
+}
+#side-box-right .ui-widget-header {
+	background: #ededed;
+}
+#first-setting-info td {
+	line-height: 1.5;
+	padding: 10px
+}

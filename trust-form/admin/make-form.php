@@ -18,7 +18,7 @@ $form_config = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get
 <div class="metabox-holder">
 <div id="element-container" class="postbox-container" style="width:25%;">
 <?php
-add_meta_box( 'standard-form', __( 'Standard Field', TRUST_FORM_DOMAIN ), 'trustform_standard_form_meta_box', 'trustform', 'advanced', 'core' );
+add_meta_box( 'standard-form', __( 'Form Element', TRUST_FORM_DOMAIN ), 'trustform_standard_form_meta_box', 'trustform', 'advanced', 'core' );
 //add_meta_box( 'advanced-form', __( 'Advanced Field', TRUST_FORM_DOMAIN ), 'trustform_advanced_form_meta_box', 'trustform', 'advanced', 'core' );
 
 do_meta_boxes( 'trustform', 'advanced', $this );
@@ -325,12 +325,18 @@ function trustform_advanced_form_meta_box() {
 <?php echo $form_admin_input; ?>
 <?php  else : ?>
 <!-- HTML -->
+<!-- changed by natasha
 <p id="info-message-input"><?php echo esc_html( __( 'Please Edit Text', TRUST_FORM_DOMAIN ) ); ?></p>
+-->
+<p id="info-message-input" style="display: none;"></p>
+<!-- changed by natasha
 <p id="message-container-input" style="display:none;"></p>
+-->
+<p id="message-container-input"><textarea cols="40" placeholder="<?php echo esc_html( __( 'Please Input Text above the Form', TRUST_FORM_DOMAIN ) ); ?>"></textarea></p>
 <table id="setting-form" class="element-sortables">
 <tbody>
 <tr id="first-setting-info">
-  <td class="first-setting-info" style="border-width:0px; color:#AAAAAA; font-size:20px; text-align:center; margin:20px 0; height:150px; background-color: #F5F5F5; border: 2px dotted #999999;"><?php echo esc_html(  __( 'Drag and Drop Form Element', TRUST_FORM_DOMAIN ) ); ?></td>
+  <td class="first-setting-info" style="border-width:0px;color:#AAAAAA;font-size:20px;text-align:center;margin:20px 0;height:150px;background-color: #F5F5F5;border: 2px dotted #999999;"><?php echo esc_html(  __( 'Drag and Drop Form Element', TRUST_FORM_DOMAIN ) ); ?></td>
 </tr>
 </tbody>
 </table>
@@ -356,8 +362,14 @@ function trustform_advanced_form_meta_box() {
 <?php echo $form_admin_confirm; ?>
 <?php  else : ?>
 <!-- HTML -->
+<!-- changed by natasha
 <p id="info-message-confirm"><?php echo esc_html( __( 'Please Edit Text', TRUST_FORM_DOMAIN ) ); ?></p>
+-->
+<p id="info-message-confirm" style="display: none;"></p>
+<!-- changed by natasha
 <p id="message-container-confirm" style="display:none;"></p>
+-->
+<p id="message-container-confirm"><textarea cols="40" placeholder="<?php echo esc_html( __( 'Please Input Text above the Form', TRUST_FORM_DOMAIN ) ); ?>"></textarea></p>
 <table id="setting-confirm-form" >
 <tbody>
 </tbody>
@@ -387,8 +399,14 @@ function trustform_advanced_form_meta_box() {
 <?php echo $form_admin_finish; ?>
 <?php  else : ?>
 <!-- HTML -->
+<!-- changed by natasha
 <p id="info-message-finish"><?php echo esc_html( __( 'Please Edit Text', TRUST_FORM_DOMAIN ) ); ?></p>
+-->
+<p id="info-message-finish" style="display: none;"></p>
+<!-- changed by natasha
 <p id="message-container-finish" style="display:none;"></p>
+-->
+<p id="message-container-finish"><textarea cols="40" placeholder="<?php echo esc_html( __( 'Please Input Thanks Message', TRUST_FORM_DOMAIN ) ); ?>"></textarea></p>
 <?php endif; ?>
 </div>
 </div>
