@@ -510,3 +510,6 @@ msgstr "フォームの上に表示するテキストを入力してください
 
 msgid "Please Input Thanks Message"
 msgstr "完了のメッセージを入力してください。"
+
+msgid "Require Mark Setting"
+msgstr "必須マークの設定"

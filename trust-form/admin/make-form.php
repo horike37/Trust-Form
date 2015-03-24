@@ -13,7 +13,7 @@ $form_config = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get
 </div>
 <div id="trust-form-short-code" class="updated" <?php echo $display ?>><p><?php echo esc_html(  __( 'Please insert Copy and paste the tag on the right into page or post', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="60" value="<?php echo '[trust-form id='.$this->form_id.']'; ?>" readonly="readonly" onclick="javascript:jQuery(this).select();" /></p></div>
 <div id="short-code-box">
-<p id="trust-form-title-msg"><?php echo esc_html(  __( 'Form Title', TRUST_FORM_DOMAIN ) ); ?>: <input id="trust-form-title" type="text" size="40" class="trust-form-title" name="trust-form-title" title="form-title" value="<?php echo $this->form_title != '' ? esc_html( $this->form_title ) : 'trust-form' ; ?>" /></p>
+<p id="trust-form-title-msg"><?php echo esc_html(  __( 'Title', TRUST_FORM_DOMAIN ) ); ?>: <input id="trust-form-title" type="text" size="40" class="trust-form-title" name="trust-form-title" title="form-title" value="<?php echo $this->form_title != '' ? esc_html( $this->form_title ) : 'trust-form' ; ?>" /></p>
 </div>
 <div class="metabox-holder">
 <div id="element-container" class="postbox-container" style="width:25%;">
@@ -314,12 +314,14 @@ function trustform_advanced_form_meta_box() {
 <li><a href="#tab-3"><span><?php echo esc_html(  __( 'Finsh Screen', TRUST_FORM_DOMAIN ) ); ?></span></a></li>
 </ul>
 <div id="tab-1">
+<!-- moved by natasha 
 <ul id="trust-form-toolbar" class="toolbar">
 <?php if ( defined( 'TRUST_FORM_DEFAULT_STYLE' ) && TRUST_FORM_DEFAULT_STYLE === false ) : ?>
 <li id="menu-css_editor"><?php echo esc_html( __( 'CSS Editor', TRUST_FORM_DOMAIN ) ); ?></li>
 <?php endif; ?>
 <li id="menu-require_mark"><?php echo esc_html( __( 'Require Mark', TRUST_FORM_DOMAIN ) ); ?></li>
 </ul>
+-->
 <div class="contact-form contact-form-input">
 <?php if ( $form_admin_input !='' ) : ?>
 <?php echo $form_admin_input; ?>
@@ -333,6 +335,17 @@ function trustform_advanced_form_meta_box() {
 <p id="message-container-input" style="display:none;"></p>
 -->
 <p id="message-container-input"><textarea cols="40" placeholder="<?php echo esc_html( __( 'Please Input Text above the Form', TRUST_FORM_DOMAIN ) ); ?>"></textarea></p>
+<ul id="trust-form-toolbar" class="toolbar">
+<?php if ( defined( 'TRUST_FORM_DEFAULT_STYLE' ) && TRUST_FORM_DEFAULT_STYLE === false ) : ?>
+<li id="menu-css_editor"><?php echo esc_html( __( 'CSS Editor', TRUST_FORM_DOMAIN ) ); ?></li>
+<?php endif; ?>
+<li id="menu-require_mark">
+<!-- changed by natasha
+<?php echo esc_html( __( 'Require Mark', TRUST_FORM_DOMAIN ) ); ?>
+-->
+<?php echo esc_html( __( 'Require Mark Setting', TRUST_FORM_DOMAIN ) ); ?>
+</li>
+</ul>
 <table id="setting-form" class="element-sortables">
 <tbody>
 <tr id="first-setting-info">
@@ -456,7 +469,7 @@ function trustform_other_setting_meta_box() {
 $form_id = !isset( $_GET['form'] ) || !is_numeric($_GET['form']) ? '' : $_GET['form'] ;
 $other_setting = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $form_id, 'other_setting' ) ;
 ?>
-<textarea id="trust-form-other-setting" name="other-setting" rows="7" cols="70" ><?php echo $other_setting != '' && isset($other_setting[0]) ? $other_setting[0] : ''; ?></textarea>
+<textarea id="trust-form-other-setting" name="other-setting" rows="7" cols="64" ><?php echo $other_setting != '' && isset($other_setting[0]) ? $other_setting[0] : ''; ?></textarea>
 <?php	
 }
 

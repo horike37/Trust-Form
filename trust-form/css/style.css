@@ -433,9 +433,45 @@ table#standard-form-element-list .element-title {
 table#standard-form-element-list .element-title h4 {
 	width: 190px;
 }
+#side-box-right {
+	min-width: 500px;
+}
 #side-box-right .ui-widget-header {
 	background: #ededed;
 }
+#tab-1 ul.toolbar {
+	background: none;
+	padding: 0;
+}
+#tab-1 ul.toolbar li {
+	border-radius: inherit;
+	min-width: inherit;
+	padding: 5px;
+	text-shadow: none;
+	color: #222222;
+}
+#menu-require_mark {
+	background: -moz-linear-gradient(top, #ffffff, #f6f6f6);
+	background: -ms-linear-gradient(top, #ffffff, #f6f6f6);
+	background: -webkit-linear-gradient(top, #ffffff, #f6f6f6);
+	background: linear-gradient(top, #ffffff, #f6f6f6);
+	border: 1px #E3E3E3 solid;
+}
+/*
+#require-mark {
+	position: absolute!important;
+	top: 315px!important;
+	left: 570px!important;
+}
+*/
+#setting-form th,
+#setting-form td {
+	text-align: left;
+	padding: 5px;
+}
+
+
+
 #first-setting-info td {
 	line-height: 1.5;
 	padding: 10px

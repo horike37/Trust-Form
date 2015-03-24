@@ -487,3 +487,6 @@ msgstr ""
 
 msgid "Please Input Thanks Message"
 msgstr ""
+
+msgid "Require Mark Setting"
+msgstr ""

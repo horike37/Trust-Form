@@ -35,7 +35,7 @@ var addTrustForm,TR_element_count = 0;
        			title: "Require Mark",
         		minWidth: 300,
         		minHeight: 120,
-        		position: [570,522]
+        		position: [570,315]//changed by natasha->shippai
 			});
 
 			a("#menu-require_mark").on('click', function(){ a("#require-mark").dialog("open"); });
