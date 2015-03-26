@@ -513,3 +513,6 @@ msgstr "完了のメッセージを入力してください。"
 
 msgid "Require Mark Setting"
 msgstr "必須マークの設定"
+
+msgid "Change Saved"
+msgstr "更新しました。"

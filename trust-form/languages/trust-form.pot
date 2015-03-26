@@ -490,3 +490,6 @@ msgstr ""
 
 msgid "Require Mark Setting"
 msgstr ""
+
+msgid "Change Saved"
+msgstr ""

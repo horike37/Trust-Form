@@ -434,7 +434,7 @@ table#standard-form-element-list .element-title h4 {
 	width: 190px;
 }
 #side-box-right {
-	min-width: 500px;
+	min-width: 576px;
 }
 #side-box-right .ui-widget-header {
 	background: #ededed;
@@ -475,4 +475,15 @@ table#standard-form-element-list .element-title h4 {
 #first-setting-info td {
 	line-height: 1.5;
 	padding: 10px
+}
+
+#save-change {
+	float: left;
+}
+#save-result {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	position: relative;
+	bottom: 7px;
 }
