@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+div.contact-form {
+    height: auto;
+    width:350px;
+}
+
+div.contact-form p.message-container{
+}
+
+div.contact-form table {
+}
+
+div.contact-form table th {
+}
+
+div.contact-form table td {
+}
+
+div.contact-form p.submit-container {
+}
+
+div.contact-form div.submessage {
+    font-size: 80%;
+}
+
+div.contact-form span.require {
+    margin-left:3px;
+    color:red;
+}
+
+div.contact-form div.error {
+    color:red;
+}
+
+
+/* split css in input confirm finish  */
+div.contact-form-input {}
+div.contact-form-confirm {}
+div.contact-form-finish {}
+
+div.contact-form-input table {}
+div.contact-form-confirm table  {}
+div.contact-form-finish table {}
+
+div.contact-form-input table th {}
+div.contact-form-confirm table th {}
+div.contact-form-finish table th {}
+
+div.contact-form-input table td {}
+div.contact-form-confirm table td {}
+div.contact-form-finish table td {}

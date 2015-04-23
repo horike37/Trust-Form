@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Trust Forms\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-19 22:01+0900\n"
-"PO-Revision-Date: 2015-03-24 02:30+0900\n"
+"PO-Revision-Date: 2015-04-14 02:23+0900\n"
 "Last-Translator: Hitoshi Omagari <hitoshi@prime-strategy.co.jp>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -502,7 +502,7 @@ msgid "The e-mail mismatch"
 msgstr "メールアドレスが一致しません"
 
 msgid "Re-entering E-mail"
-msgstr ""
+msgstr "メールアドレスの確認入力"
 
 # added by natasha
 msgid "Please Input Text above the Form"
@@ -516,3 +516,9 @@ msgstr "必須マークの設定"
 
 msgid "Change Saved"
 msgstr "更新しました。"
+
+msgid "Click Elements to Setting."
+msgstr "要素をクリックして設定してください。"
+
+msgid "option value"
+msgstr "オプション値"

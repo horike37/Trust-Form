@@ -38,16 +38,20 @@ function trustform_standard_form_meta_box() {
   </td>
   <td class="setting-element-editor" style="display:none">
     <div class="edit-element-container" style="display:none">
-      <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">
-      <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+      <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+      <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
       <div class="text-edit-content edit-content display-out" >
-        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Textbox', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Textbox', TRUST_FORM_DOMAIN )); ?></strong></span>
+        <!-- changed by natasha
+        <img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">
+        -->
+        </div>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
         <ul>
-          <li><?php echo esc_html( __( 'size', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" validate="[required]" name="textbox-size" value="" /></li>
-          <li><?php echo esc_html( __( 'maxlength', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" name="textbox-maxlength" value="" /></li>
-          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="textbox-class" value="" /></li>
+          <li><?php echo esc_html( __( 'size', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" validate="[required]" name="textbox-size" value="" /></li>
+          <li><?php echo esc_html( __( 'maxlength', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" name="textbox-maxlength" value="" /></li>
+          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="textbox-class" value="" /></li>
         </ul>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
@@ -86,12 +90,18 @@ function trustform_standard_form_meta_box() {
 		    <li><input type="radio" name="akismet-config" value="author_email" /><?php echo esc_html( __( 'author_email', TRUST_FORM_DOMAIN ) ); ?></li>
 		    <li><input type="radio" name="akismet-config" value="author_url" /><?php echo esc_html( __( 'author_url', TRUST_FORM_DOMAIN ) ); ?></li>
 	      </ul>
+		  <hr class="text-edit-conten-spencer">
+		  <ul>
+		      <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	      </ul>
 	  </div>
+	  
+
 	</div>
   </td>
   </tr>
   <!-- Textarea -->
-  <tr class="form-element ui-draggable  textarea-container" title="textarea">	
+  <tr class="form-element ui-draggable  textarea-container" title="textarea">
   <td class="element-title"><h4><?php echo esc_html(  __( 'Textarea', TRUST_FORM_DOMAIN )); ?><span class="in-widget-title"></span></h4></td>
   <th scope="row" class="setting-element-title" style="visibility: hidden;"><div class="subject"><span class="content">title</span><span class="require"></span></div><div class="submessage"><span class="content"></span></div></th>
   <td class="setting-element-discription" style="visibility: hidden;">
@@ -99,16 +109,16 @@ function trustform_standard_form_meta_box() {
   </td>
   <td class="setting-element-editor" style="display:none">
     <div class="edit-element-container" style="display:none">
-      <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">
-      <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+      <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+      <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
       <div class="text-edit-content  display-out">
-        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Textarea', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Textarea', TRUST_FORM_DOMAIN )); ?></strong></span><!--<img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
         <ul>
-          <li><?php echo esc_html( __( 'rows', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" name="textarea-rows" value="" /></li>
-          <li><?php echo esc_html( __( 'cols', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" name="textarea-cols" value="" /></li>
-          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="textarea-class" value="" /></li>
+          <li><?php echo esc_html( __( 'rows', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" name="textarea-rows" value="" /></li>
+          <li><?php echo esc_html( __( 'cols', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" name="textarea-cols" value="" /></li>
+          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="textarea-class" value="" /></li>
         </ul>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
@@ -130,12 +140,16 @@ function trustform_standard_form_meta_box() {
 		  <li><input type="radio" name="akismet-config" value="author_email" /><?php echo esc_html( __( 'author_email', TRUST_FORM_DOMAIN ) ); ?></li>
 		  <li><input type="radio" name="akismet-config" value="author_url" /><?php echo esc_html( __( 'author_url', TRUST_FORM_DOMAIN ) ); ?></li>
 	    </ul>
+	    <hr class="text-edit-conten-spencer">
+		<ul>
+		    <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	    </ul>
 	  </div>
     </div>
   </td>
   </tr>
   <!-- Checkbox -->
-  <tr class="form-element ui-draggable  checkbox-container" title="checkbox">	
+  <tr class="form-element ui-draggable  checkbox-container" title="checkbox">
     <td class="element-title"><h4><?php echo esc_html(  __( 'Checkbox', TRUST_FORM_DOMAIN )); ?><span class="in-widget-title"></span></h4></td>
     <th scope="row" class="setting-element-title" style="visibility: hidden;"><div class="subject"><span class="content">title</span><span class="require"></span></div><div class="submessage"><span class="content"></span></div></th>
     <td class="setting-element-discription" style="visibility: hidden;">
@@ -145,13 +159,13 @@ function trustform_standard_form_meta_box() {
     </td>
     <td class="setting-element-editor" style="display:none">
       <div class="edit-element-container" style="display:none">
-        <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">
-        <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+        <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+        <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
         <div class="text-edit-content display-out">
-          <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Checkbox', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+          <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Checkbox', TRUST_FORM_DOMAIN )); ?></strong></span><!--<img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
           <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'option value', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 	      <hr class="text-edit-conten-spencer" />
-	      <textarea class="option-value-editor" role="checkbox" cols="35" rows="5" ></textarea>
+	      <textarea class="option-value-editor" role="checkbox" cols="33" rows="5" ></textarea>
 	      <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
           <hr class="text-edit-conten-spencer" />
           <ul style="text-align:left;">
@@ -160,7 +174,7 @@ function trustform_standard_form_meta_box() {
           <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
           <hr class="text-edit-conten-spencer" />
           <ul>
-            <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="checkbox-class" value="" /></li>
+            <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="checkbox-class" value="" /></li>
           </ul>
 		  <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Akismet Configuration', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 		  <hr class="text-edit-conten-spencer">
@@ -170,12 +184,16 @@ function trustform_standard_form_meta_box() {
 		    <li><input type="radio" name="akismet-config" value="author_email" /><?php echo esc_html( __( 'author_email', TRUST_FORM_DOMAIN ) ); ?></li>
 		    <li><input type="radio" name="akismet-config" value="author_url" /><?php echo esc_html( __( 'author_url', TRUST_FORM_DOMAIN ) ); ?></li>
 	      </ul>
+	      <hr class="text-edit-conten-spencer">
+		  <ul>
+		      <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	      </ul>
 	    </div>
       </div>
     </td>
   </tr>
   <!-- Radio -->
-  <tr class="form-element ui-draggable  radio-container" title="radio">	
+  <tr class="form-element ui-draggable  radio-container" title="radio">
     <td class="element-title"><h4><?php echo esc_html(  __( 'Radio', TRUST_FORM_DOMAIN )); ?><span class="in-widget-title"></span></h4></td>
     <th scope="row" class="setting-element-title" style="visibility: hidden;"><div class="subject"><span class="content">title</span><span class="require"></span></div><div class="submessage"><span class="content"></span></div></th>
     <td class="setting-element-discription" style="visibility: hidden;">
@@ -185,13 +203,13 @@ function trustform_standard_form_meta_box() {
     </td>
     <td class="setting-element-editor" style="display:none">
       <div class="edit-element-container" style="display:none">
-        <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">         
-        <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+        <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+        <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
         <div class="text-edit-content display-out">
-          <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Radio', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
-          <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Select', TRUST_FORM_DOMAIN ) ); ?></strong></div>           
+          <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Radio', TRUST_FORM_DOMAIN )); ?></strong></span><!--<img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
+          <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Select', TRUST_FORM_DOMAIN ) ); ?></strong></div>
           <hr class="text-edit-conten-spencer" />
-          <textarea class="option-value-editor" role="radio" cols="35" rows="5" ></textarea>
+          <textarea class="option-value-editor" role="radio" cols="33" rows="5" ></textarea>
           <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
           <hr class="text-edit-conten-spencer" />
           <ul style="text-align:left;">
@@ -200,7 +218,7 @@ function trustform_standard_form_meta_box() {
           <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
           <hr class="text-edit-conten-spencer" />
           <ul>
-            <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="radio-class" value="" /></li>
+            <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="radio-class" value="" /></li>
           </ul>
 		  <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Akismet Configuration', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 		  <hr class="text-edit-conten-spencer">
@@ -210,13 +228,17 @@ function trustform_standard_form_meta_box() {
 		    <li><input type="radio" name="akismet-config" value="author_email" /><?php echo esc_html( __( 'author_email', TRUST_FORM_DOMAIN ) ); ?></li>
 		    <li><input type="radio" name="akismet-config" value="author_url" /><?php echo esc_html( __( 'author_url', TRUST_FORM_DOMAIN ) ); ?></li>
 	      </ul>
+		  <hr class="text-edit-conten-spencer">
+		  <ul>
+		      <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	      </ul>
 	    </div>
       </div>
       <br style="clear: both;">
     </td>
   </tr>
   <!-- Selectbox -->
-  <tr class="form-element ui-draggable  selectbox-container" title="selectbox">	
+  <tr class="form-element ui-draggable  selectbox-container" title="selectbox">
     <td class="element-title"><h4><?php echo esc_html(  __( 'Selectbox', TRUST_FORM_DOMAIN )); ?><span class="in-widget-title"></span></h4></td>
     <th scope="row" class="setting-element-title" style="visibility: hidden;"><div class="subject"><span class="content">title</span><span class="require"></span></div><div class="submessage"><span class="content"></span></div></th>
     <td class="setting-element-discription" style="visibility: hidden;">
@@ -224,16 +246,16 @@ function trustform_standard_form_meta_box() {
     </td>
     <td class="setting-element-editor" style="display:none">
       <div class="edit-element-container" style="display:none">
-      <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">
-      <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+      <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+      <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
       <div class="text-edit-content display-out">
-        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Selectbox', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'Selectbox', TRUST_FORM_DOMAIN )); ?></strong></span><!--<img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'selectbox value', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 	    <hr class="text-edit-conten-spencer" />
 	    <p><?php echo esc_html(  __( 'default', TRUST_FORM_DOMAIN ) ); ?><br />
 	    <input type="text" name="selectbox-default-value" size="24" /></p>
 	    <p><?php echo esc_html(  __( 'value', TRUST_FORM_DOMAIN ) ); ?><br />
-	    <textarea class="option-value-editor" role="selectbox" cols="35" rows="5" ></textarea></p>
+	    <textarea class="option-value-editor" role="selectbox" cols="33" rows="5" ></textarea></p>
 	    <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
         <ul style="text-align:left;">
@@ -242,7 +264,7 @@ function trustform_standard_form_meta_box() {
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
         <ul>
-          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="selectbox-class" value="" /></li>
+          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="selectbox-class" value="" /></li>
         </ul>
 		<div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Akismet Configuration', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 		<hr class="text-edit-conten-spencer">
@@ -251,6 +273,10 @@ function trustform_standard_form_meta_box() {
           <li><input type="radio" name="akismet-config" value="author" /><?php echo esc_html( __( 'author', TRUST_FORM_DOMAIN ) ); ?></li>
 		  <li><input type="radio" name="akismet-config" value="author_email" /><?php echo esc_html( __( 'author_email', TRUST_FORM_DOMAIN ) ); ?></li>
 		  <li><input type="radio" name="akismet-config" value="author_url" /><?php echo esc_html( __( 'author_url', TRUST_FORM_DOMAIN ) ); ?></li>
+	    </ul>
+		<hr class="text-edit-conten-spencer">
+		<ul>
+		    <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
 	    </ul>
 	  </div>
     </td>
@@ -264,16 +290,16 @@ function trustform_standard_form_meta_box() {
   </td>
   <td class="setting-element-editor" style="display:none">
     <div class="edit-element-container" style="display:none">
-      <img class="edit-menu-icon text-edit edit-button" src="images/generic.png">
-      <img class="edit-menu-icon text-delete delete-button" src="images/no.png">
+      <img class="edit-menu-icon text-edit edit-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/gear.png'; ?>" alt="setting" title="setting" width="20px">
+      <img class="edit-menu-icon text-delete delete-button" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/trash.png'; ?>" alt="delete" title="delete" width="20px">
       <div class="text-edit-content edit-content display-out" >
-        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'E-Mail', TRUST_FORM_DOMAIN )); ?></strong></span><img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+        <div class="edit-content-title"><span><strong><?php echo esc_html(  __( 'E-Mail', TRUST_FORM_DOMAIN )); ?></strong></span><!--<img class="del-icon" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'attribute', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
         <ul>
-          <li><?php echo esc_html( __( 'size', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" validate="[required]" name="textbox-size" value="" /></li>
-          <li><?php echo esc_html( __( 'maxlength', TRUST_FORM_DOMAIN ) ); ?><input type="text" size="3" name="textbox-maxlength" value="" /></li>
-          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?><input type="text" name="textbox-class" value="" /></li>
+          <li><?php echo esc_html( __( 'size', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" validate="[required]" name="textbox-size" value="" /></li>
+          <li><?php echo esc_html( __( 'maxlength', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" size="3" name="textbox-maxlength" value="" /></li>
+          <li><?php echo esc_html( __( 'class', TRUST_FORM_DOMAIN ) ); ?>&nbsp;<input type="text" name="textbox-class" value="" /></li>
         </ul>
         <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'validation', TRUST_FORM_DOMAIN ) ); ?></strong></div>
         <hr class="text-edit-conten-spencer" />
@@ -293,6 +319,10 @@ function trustform_standard_form_meta_box() {
 		<ul style="text-align:left;">
 		  <li><input type="text" name="email-confirm-title" value="" /></li>
 		</ul>
+		<hr class="text-edit-conten-spencer">
+		<ul>
+		    <li><input class="del-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	    </ul>
 	  </div>
 	</div>
   </td>
@@ -314,7 +344,7 @@ function trustform_advanced_form_meta_box() {
 <li><a href="#tab-3"><span><?php echo esc_html(  __( 'Finsh Screen', TRUST_FORM_DOMAIN ) ); ?></span></a></li>
 </ul>
 <div id="tab-1">
-<!-- moved by natasha 
+<!-- moved by natasha
 <ul id="trust-form-toolbar" class="toolbar">
 <?php if ( defined( 'TRUST_FORM_DEFAULT_STYLE' ) && TRUST_FORM_DEFAULT_STYLE === false ) : ?>
 <li id="menu-css_editor"><?php echo esc_html( __( 'CSS Editor', TRUST_FORM_DOMAIN ) ); ?></li>
@@ -346,6 +376,7 @@ function trustform_advanced_form_meta_box() {
 <?php echo esc_html( __( 'Require Mark Setting', TRUST_FORM_DOMAIN ) ); ?>
 </li>
 </ul>
+<p id="setting-description"><?php echo esc_html( __( 'Click Elements to Setting.', TRUST_FORM_DOMAIN ) ); ?></p>
 <table id="setting-form" class="element-sortables">
 <tbody>
 <tr id="first-setting-info">
@@ -354,17 +385,23 @@ function trustform_advanced_form_meta_box() {
 </tbody>
 </table>
 <!-- Submit Button -->
-<p id="confirm-button" class="submit-container">	
+<div>
+<p id="confirm-button" class="submit-container">
   <input type="submit" name="send-to-confirm" value="<?php echo esc_html(  __( 'Confirm', TRUST_FORM_DOMAIN ) ); ?>" />
 </p>
 <div class="submit-element-container" style="display:none;">
   <div class="text-edit-content">
-    <div class="edit-content-title"><span><strong>Submit Button</strong></span><img class="del-icon" style="bottom:0;" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>"></div>
+    <div class="edit-content-title"><span><strong>Submit Button</strong></span><!--<img class="del-icon" style="bottom:0;" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/del.gif'; ?>">--></div>
     <ul>
       <li><?php echo esc_html( __( 'button text', TRUST_FORM_DOMAIN ) ); ?> <input type="text" name="submitbutton-text" value="" /></li>
       <li><?php echo esc_html( __( 'button image', TRUST_FORM_DOMAIN ) ); ?> <a class="media-upload" href="JavaScript:void(0);" rel="button_media_1" ><?php echo esc_html( __( 'Select File', TRUST_FORM_DOMAIN ) ); ?></a> <input style="display:none;" type="button" class="button-secondary" name="restore-to-button" value="<?php echo esc_html( __( 'restore to button', TRUST_FORM_DOMAIN ) ); ?>" /></li>
     </ul>
+	<hr class="text-edit-conten-spencer">
+	<ul class="ok-button">
+	    <li><input class="del-icon submit-icon" type="image" src="<?php echo TRUST_FORM_PLUGIN_URL.'/images/ok.png'; ?>" alt="OK"></li>
+	</ul>
   </div>
+</div>
 </div>
 <?php endif; ?>
 </div>
@@ -388,7 +425,7 @@ function trustform_advanced_form_meta_box() {
 </tbody>
 </table>
 <!-- Submit Button -->
-<p id="finish-button" class="submit-container">	
+<p id="finish-button" class="submit-container">
   <input type="submit" name="return-to-input" value="<?php echo esc_html(  __( 'return', TRUST_FORM_DOMAIN ) ); ?>" />
   <input type="submit" name="send-to-finish" value="<?php echo esc_html(  __( 'send', TRUST_FORM_DOMAIN ) ); ?>" />
 </p>
@@ -470,7 +507,7 @@ $form_id = !isset( $_GET['form'] ) || !is_numeric($_GET['form']) ? '' : $_GET['f
 $other_setting = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $form_id, 'other_setting' ) ;
 ?>
 <textarea id="trust-form-other-setting" name="other-setting" rows="7" cols="64" ><?php echo $other_setting != '' && isset($other_setting[0]) ? $other_setting[0] : ''; ?></textarea>
-<?php	
+<?php
 }
 
 ?>
