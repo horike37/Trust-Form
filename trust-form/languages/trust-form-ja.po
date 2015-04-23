@@ -522,3 +522,6 @@ msgstr "要素をクリックして設定してください。"
 
 msgid "option value"
 msgstr "オプション値"
+
+msgid "Set two elements of mail address, and input the another title below each other."
+msgstr "メールアドレスの要素を二つ用意し、互いの要素のタイトルを下記に入力します。"

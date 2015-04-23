@@ -316,8 +316,11 @@ function trustform_standard_form_meta_box() {
 	    </ul>
 	    <div class="text-edit-content-title"><strong><?php echo esc_html(  __( 'Re-entering E-mail', TRUST_FORM_DOMAIN ) ); ?></strong></div>
 		<hr class="text-edit-conten-spencer">
+		<p><?php echo esc_html(  __( 'Set two elements of mail address, and input the another title below each other.', TRUST_FORM_DOMAIN ) ); ?></p>
 		<ul style="text-align:left;">
-		  <li><input type="text" name="email-confirm-title" value="" /></li>
+		  <li>
+		  	<input type="text" name="email-confirm-title" value="" />
+		  </li>
 		</ul>
 		<hr class="text-edit-conten-spencer">
 		<ul>

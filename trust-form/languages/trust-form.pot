@@ -499,3 +499,6 @@ msgstr ""
 
 msgid "option value"
 msgstr ""
+
+msgid "Set two elements of mail address, and input the another title below each other."
+msgstr ""
