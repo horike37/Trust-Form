@@ -793,12 +793,14 @@ jQuery(document).ready(function() {
 				}
 				jQuery.post(ajaxurl, param3, function() {});
 
+			//changed by natasha
 			var btn = jQuery('#save-change');
-				btn.css('display', 'none');
+				//btn.css('display', 'none');
 				btn.after(jQuery('<img>', {id:'loading-icon',src:'../wp-content/plugins/trust-form/images/ajax-loader.gif',style:'margin-left:30px;'}));
 				setTimeout( function(id) {
    					jQuery('#loading-icon').remove();
    					btn.css('display', 'block');
+   					btn.after('<p id="save-result">' + '<?php echo __( 'Change Saved', TRUST_FORM_DOMAIN ); ?>' + '</p>');//add
    					jQuery('#trust-form-short-code').css('display', 'block');
    					jQuery('#trust-form-short-code-under').css('display', 'block');
 					jQuery('#trust-form-short-code > p > input').val('[trust-form id='+jQuery('#form_id').val()+']');

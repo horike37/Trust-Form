@@ -1,21 +1,21 @@
 var addTrustForm,TR_element_count = 0;
 (function(a){
-	addTrustForm = 
+	addTrustForm =
 	{
 		init:function()
 		{
 			var l,z,v,x="",s,m;
-			
+
 			postboxes.add_postbox_toggles("trustform");
 			a('.if-js-closed').removeClass('if-js-closed').addClass('closed');
 
 			a('#tab').tabs({ fx: { duration: 'fast', opacity: 'toggle' } });
-			
-			a('#trust-form-title').hover( 
+
+			a('#trust-form-title').hover(
                 function(){a(this).removeClass("trust-form-title");},
 				function(){a(this).addClass("trust-form-title");}
 			);
-			
+
 			a('textarea').bind('textchange', function(){
 				a(this).html(a(this).val());
 			});
@@ -27,15 +27,36 @@ var addTrustForm,TR_element_count = 0;
         		minHeight: 500,
         		position: [522,296]
 			});
-			
+
 			a("#menu-css_editor").on('click', function(){ a("#css-editor").dialog("open"); });
 
+/*
 			a('#require-mark').dialog({
   				autoOpen: false,
        			title: "Require Mark",
         		minWidth: 300,
         		minHeight: 120,
-        		position: [570,522]
+        		position: [570,315]//changed by natasha->shippai
+			});
+
+			a("#menu-require_mark").on('click', function(){ a("#require-mark").dialog("open"); });
+*/
+			// changed by kamiyan
+			a('#require-mark').dialog({
+				autoOpen: false,
+				title: "Require Mark",
+				minWidth: 300,
+				minHeight: 120,
+				position: {
+					of : '#menu-require_mark',
+					at: 'right bottom',
+					my: 'left top'
+				},
+				buttons: {
+					"OK": function () {
+						a(this).dialog("close");
+					}
+				}
 			});
 
 			a("#menu-require_mark").on('click', function(){ a("#require-mark").dialog("open"); });
@@ -84,11 +105,31 @@ var addTrustForm,TR_element_count = 0;
                     a("#setting-form > tbody > tr > .element-title").remove();
                     a("#setting-form > tbody > tr > .setting-element-title").css("visibility", "visible");
                     a("#setting-form > tbody > tr > .setting-element-discription").css("visibility", "visible");
+                    //added by natasha
+                    a('#setting-description').css('display', 'block');
                 }
 			});
 
 			addTrustForm.sortable(a);
-			
+
+			/*
+			function readyEdit(){
+
+				//各要素のタイトルを編集するためのクリックイベント
+				var elementTitle = ".setting-element-title > div.subject > span.content, .setting-element-title > div.submessage > span.content";
+				if (!a(elementTitle).children("input").length) {
+					a(elementTitle).removeClass('subject-hover');
+					a(elementTitle).html(a('<input>',{type:'text',val:a(this).html()}));
+					a(elementTitle).children("input").focus().select().blur(function(){
+						a(elementTitle).parent().html(a(elementTitle).val());
+						//確認画面へも要素を反映(パフォーマンスが悪くなれば、アルゴリズムを変える)
+						addTrustForm.asyncForm();
+					});
+				}
+			}
+*/
+
+
 			//各要素のタイトルを編集するためのクリックイベント
 			a(".setting-element-title > div.subject > span.content, .setting-element-title > div.submessage > span.content").live("click", function(){
 				if (!a(this).children("input").length) {
@@ -128,12 +169,12 @@ var addTrustForm,TR_element_count = 0;
 					q.dequeue();
       			});
 			});
-			
+
 			//要素タイトルのinput内を塗りつぶす
 			a(".setting-element-title").live("mouseover", function(){
 				a(this).addClass("element-title-hover");
 			});
-			
+
 			//バリデーション設定のボックスのスライド
 			a("input[name=textbox-char-num]").live("click", function(){
 				a(this).parent().next().slideToggle("fast");
@@ -165,7 +206,7 @@ var addTrustForm,TR_element_count = 0;
 			a("#setting-form").find("input,textarea").live("click", function(){
 				a(this).focus();
 			});
-			
+
 			//バリデーション設定反映
 			a("input[type=checkbox]").live("click", function(){
 				if (a(this).is(':checked')){
@@ -174,14 +215,14 @@ var addTrustForm,TR_element_count = 0;
 					a(this).removeAttr('checked');
 				}
 			});
-			
+
 			a("input[type=radio]").live("click", function(){
 				a("input[name="+a(this).attr('name')+"]").removeAttr('checked');
 				a(this).attr('checked', 'checked');
 			});
 
 		},
-		changeElement: function(g,t,c,x) 
+		changeElement: function(g,t,c,x)
 		{
 			var v = g.val();
 			if ( c === "checkbox" || c === "radio" ) {
@@ -209,7 +250,7 @@ var addTrustForm,TR_element_count = 0;
 			});
 			a("#setting-confirm-form > tbody").html(x);
 		},
-		
+
 		setup: function(a){
 			addTrustForm.textContentEvent(a);
 			addTrustForm.setupButton(a);
@@ -217,12 +258,14 @@ var addTrustForm,TR_element_count = 0;
 
 		setupForm: function(a){
 			var w="option value";
-			a("#setting-form > tbody > tr").hover( 
-                function(){a(this).addClass("element-hover");},
+			a("#setting-form > tbody > tr").hover(
+                function(){
+                	a(this).addClass("element-hover");
+                },
 				function(){a(this).removeClass("element-hover");}
 			);
 			//必須属性の対応
-			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){	
+			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){
 				a(this).find("input[name="+a(this).attr("title")+"-required]").on('click', function(){
 					if(a(this).is(":checked") && a("#require-mark-text").val() != ''){
 						a(this).closest('tr').find("div.subject > span.require").html(a("#require-mark-content > span").html());
@@ -241,12 +284,12 @@ var addTrustForm,TR_element_count = 0;
 				} else {
 					a(this).find(".text-edit-content").addClass('display-out');
 				}
-				
+
 				if (a(this).find('div.subject > span.content, div.submessage > span.content').children("input").length) {
 					a(this).find('div.subject > span.content, div.submessage > span.content').children("input").blur();
 				}
 			});
-			
+
 			//trエレメントを編集モードにする
 			a('#setting-form').find('tr').bind('click', function(){
 				a("#setting-form > tbody > tr").removeClass("element-hover-edit").children(".edit-element-container").css("display", "none");
@@ -278,10 +321,10 @@ var addTrustForm,TR_element_count = 0;
 			//セレクトボックス、チェック、ラジオのオプション値をリアルタイムに反映
 			a('#setting-form').find("textarea.option-value-editor").bind('focus',function(){
 				var t = a(this),r = t.attr('role'),q;
-							
+
 				if (r !== 'selectbox') {
 					q = setInterval(function(){
-							
+
 						var p = t.val(), tmp = '', name=t.closest('tr').find(".setting-element-discription > ul > li > input:first").attr('name');
 
 						p = p.replace(/\r/g, '');
@@ -290,13 +333,13 @@ var addTrustForm,TR_element_count = 0;
 						for (var i=0;i<p.length;i++){
 							tmp += '<li><input type="'+r+'" name="'+name+'" value="'+p[i]+'" />'+ p[i]+'</li>'
 						}
-								
+
 						t.closest('tr').find(".setting-element-discription > ul").html( tmp );
-									
+
 					} ,200);
 				} else {
 					q = setInterval(function(){
-							
+
 						var p = t.val(), tmp = '';
 
 						p = p.replace(/\r/g, '');
@@ -309,26 +352,26 @@ var addTrustForm,TR_element_count = 0;
 						t.closest('tr').find(".setting-element-discription > select").html( tmp );
 					} ,200);
 				}
-							
+
 				a(this).blur(function(){
 					clearInterval(q);
 				});
 			});
-			
+
 			//テキスト要素のサイズをリアルタイム反映
 			a("input[name=textbox-size]").bind("textchange", function(){
 				if(!isNaN(a(this).val())) {
 					addTrustForm.changeElement(a(this) ,"input","text" ,"size");
 				}
 			});
-						
+
 			//テキスト要素のマックスレングスをリアルタイム反映
 			a("input[name=textbox-maxlength]").bind("textchange", function(){
 				if(!isNaN(a(this).val())) {
 					addTrustForm.changeElement(a(this) ,"input","text", "maxlength");
 				}
 			});
-						
+
 			//テキスト要素のクラスをリアルタイム反映
 			a("input[name=textbox-class]").bind("textchange", function(){
 				addTrustForm.changeElement(a(this) ,"input", "text", "class");
@@ -340,29 +383,29 @@ var addTrustForm,TR_element_count = 0;
 					addTrustForm.changeElement(a(this) ,"textarea", "textarea","rows");
 				}
 			});
-						
+
 			//テキストエリア要素のcolsをリアルタイム反映
 			a("input[name=textarea-cols]").bind("textchange", function(){
 				if(!isNaN(a(this).val())) {
 					addTrustForm.changeElement(a(this) ,"textarea", "textarea","cols");
 				}
 			});
-						
+
 			//テキストエリア要素のclassをリアルタイム反映
 			a("input[name=textarea-class]").bind("textchange", function(){
 				addTrustForm.changeElement(a(this) ,"textarea", "textarea","class");
 			});
-						
+
 			//チェックボックス要素のclassをリアルタイム反映
 			a("input[name=checkbox-class]").bind("textchange", function(){
 				addTrustForm.changeElement(a(this) ,"input", "checkbox","class");
 			});
-						
+
 			//ラジオボタン要素のclassをリアルタイム反映
 			a("input[name=radio-class]").bind("textchange", function(){
 				addTrustForm.changeElement(a(this) ,"input", "radio","class");
 			});
-						
+
 			//セレクトボックス要素のclassをリアルタイム反映
 			a("input[name=selectbox-class]").bind("textchange", function(){
 				addTrustForm.changeElement(a(this) ,"select", "selectbox","class");
@@ -373,7 +416,7 @@ var addTrustForm,TR_element_count = 0;
 				w = a(this).val();
 				a(this).closest("tr").find(".setting-element-discription > select").children("option:first").text(w);
 			});
-			
+
 			//テキストボックスへの入力値をvalueに反映
 			a("input[type=text]").bind("textchange", function(){
 				a(this).attr('value', a(this).val());
@@ -394,6 +437,13 @@ var addTrustForm,TR_element_count = 0;
 				tolerance : "pointer",
 				opacity : 0.7,
 				cancel: "#first-setting-info",
+				receive: function(e,ui){
+					// setTimeout(function(){
+					// 	a('#setting-form').find('tr').each(function(){
+					// 		a(this).click();
+					// 	});
+					// },500);
+				},
 				helper : function() {
 					return a('<tr><td></td><td></td></tr>');
 				},
@@ -401,11 +451,11 @@ var addTrustForm,TR_element_count = 0;
 					a(".sort-hover").html(a('<td colspan="2" class="sort-hover"></td>'));
 				},
 				activate : function(e,ui) {
-					l = a("#setting-form > tbody").children("tr").not("#first-setting-info").length;	
-					z = a(ui.item).prevAll("tr").length;				
+					l = a("#setting-form > tbody").children("tr").not("#first-setting-info").length;
+					z = a(ui.item).prevAll("tr").length;
 				},
 				stop : function(e, ui){
-					a(ui.item).find('div.submessage > span.content').hover( 
+					a(ui.item).find('div.submessage > span.content').hover(
                 		function(){
                 			//a(this).addClass("subject-hover");
                 			if (a(this).html() == '' ) {
@@ -431,10 +481,10 @@ var addTrustForm,TR_element_count = 0;
 					//各要素にheightをセット。編集メニュが現れたときに伸びないようにするため
 					a(ui.item).children("td").height(a(ui.item).children("td").height());
 					a(ui.item).children("th").height(a(ui.item).children("th").height());
-					
+
 					//初期メッセージの削除
 					a("#first-setting-info").length ? a("#first-setting-info").css("display","none") : '';
-					
+
 					//要素が追加された場合
 					if (l < a("#setting-form > tbody").children("tr").length) {
 						//input等の要素を出現させる
@@ -458,16 +508,22 @@ var addTrustForm,TR_element_count = 0;
 				}
 			});
 		},
-		
+
 		textContentEvent: function(a) {
 			var  d = 'stop',j = 'stop', b = 'stop';
 
 			//input form 上部のHTML,下部submitに対するホバー
+			/* changed by natasha
 			a("#info-message-input,#info-message-confirm,#info-message-finish,#message-container-input,#message-container-confirm,#message-container-finish,.submit-container").hover(
 				function(){a(this).addClass("element-hover");},
 				function(){a(this).removeClass("element-hover");}
 			);
-			
+			*/
+			a("#info-message-input,#info-message-confirm,#info-message-finish,.submit-container").hover(
+				function(){a(this).addClass("element-hover");},
+				function(){a(this).removeClass("element-hover");}
+			);
+
 			//input form 上部のHTMLに対するアウタークリック
 /*			a('#message-container-input').outerClick(function(){
 				if (a(this).children("textarea").length && d === 'stop' ) {
@@ -483,7 +539,7 @@ var addTrustForm,TR_element_count = 0;
 				}
 				d = 'stop';
 			});
-			
+
 			//confirm form 上部のHTMLに対するアウタークリック
 			a("#message-container-confirm").outerClick(function(){
 				if (a(this).children("textarea").length && j === 'stop' ) {
@@ -499,7 +555,7 @@ var addTrustForm,TR_element_count = 0;
 				}
 				j = 'stop';
 			});
-			
+
 			//finish form 上部のHTMLに対するアウタークリック
 			a("#message-container-finish").outerClick(function(){
 				if (a(this).children("textarea").length && b === 'stop' ) {
@@ -526,7 +582,7 @@ var addTrustForm,TR_element_count = 0;
 				});
 				a(this).css("display", "none");
 			});
-			
+
 			//confirm form 上部のHTMLに対するクリックイベント（初期メッセージ）
 			a("#info-message-confirm").bind("click",function(){
 				j = 'start';
@@ -548,8 +604,9 @@ var addTrustForm,TR_element_count = 0;
 				});
 				a(this).css("display", "none");
 			});
-			
+
 			//input form 上部のHTMLに対するクリックイベント
+			/* deleted by natasha
 			a("#message-container-input,#message-container-confirm,#message-container-finish").bind("click",function(){
 				if(!a(this).children("textarea").length) {
 					v = a(this).html();
@@ -561,6 +618,8 @@ var addTrustForm,TR_element_count = 0;
 					});
 				}
 			});
+			*/
+
 		},
 		setupButton: function(a){
 			var r = 'stop',p = "stop";
@@ -572,8 +631,9 @@ var addTrustForm,TR_element_count = 0;
 				}
 				r = 'stop';
 			});
-			
+
 			//input formサブミットボタンの☓ボタン押下時。編集状態を解除する
+			/*
 			a("#confirm-button").next().find(".del-icon").bind("click",function(){
 				if (a(this).css("display") === "block" && r === 'stop') {
 					a(".submit-element-container").css("display", "none");
@@ -581,7 +641,26 @@ var addTrustForm,TR_element_count = 0;
 				}
 				r = 'stop';
 			});
+			*/
+			/*
+			a("#confirm-button").closest(".del-icon").bind("click",function(){
+				alert("wow");
+				if (a(this).css("display") === "block" && r === 'stop') {
+					a(".submit-element-container").css("display", "none");
+					a(".submit-container").removeClass("element-hover-edit");
+				}
+				r = 'stop';
+			});
+			*/
 			
+			a(".submit-icon").bind("click",function(){
+				if (a("#confirm-button").css("display") === "block" && r === 'stop') {
+					a(".submit-element-container").css("display", "none");
+					a(".submit-container").removeClass("element-hover-edit");
+				}
+				r = 'stop';
+			});
+
 			//input formサブミットボタンのイベント設定
 			a("#confirm-button").bind("click",function(){
 				a(this).addClass("element-hover-edit");
@@ -589,7 +668,7 @@ var addTrustForm,TR_element_count = 0;
 				a(this).nextAll(".submit-element-container").css("left", (a(this).nextAll(".submit-element-container").width()-40)+"px");
 				r = 'start';
 			});
-			
+
 			//submitボタンのメッセージ変更。画像の場合はオルト
 			a("input[name=submitbutton-text]").bind("textchange", function(){
 				if (a("#confirm-button").children().attr("type") === "submit") {
@@ -632,28 +711,28 @@ var addTrustForm,TR_element_count = 0;
 					return false;
 				});
 			});
-			
+
 			//input submitボタンを画像からボタンに戻す処理
 			a("input[name=restore-to-button]").bind("click", function(){
 				var v = a("input[name=submitbutton-text]").val();
 				a("input[name=send-to-confirm]").prop({type:"submit",value:v != "" ? v : "Confirm" });
 				a(this).css("display", "none");
 			});
-			
+
 			//confirm returnボタンを画像からボタンに戻す処理
 			a("input[name=restore-to-return-button]").bind("click", function(){
 				var v = a("input[name=returnbutton-text]").val();
 				a("input[name=return-to-input]").prop({type:"button",value:v != "" ? v : "return" });
 				a(this).css("display", "none");
 			});
-			
+
 			//confirm sendボタンを画像からボタンに戻す処理
 			a("input[name=restore-to-send-button]").bind("click", function(){
 				var v = a("input[name=sendbutton-text]").val();
 				a("input[name=send-to-finish]").prop({type:"submit",value:v != "" ? v : "send" });
 				a(this).css("display", "none");
 			});
-			
+
 			//confirm formサブミットボタンのアウタークリック。編集状態を解除する
 			a("#finish-button").next().outerClick(function(){
 				if (a(this).css("display") === "block" && p === 'stop') {
@@ -662,7 +741,7 @@ var addTrustForm,TR_element_count = 0;
 				}
 				p = 'stop';
 			});
-			
+
 			//confirm formサブミットボタンの☓ボタン押下時。編集状態を解除する
 			a("#finish-button").next().find(".del-icon").click(function(){
 				if (a(this).css("display") === "block" && p === 'stop') {
@@ -671,7 +750,7 @@ var addTrustForm,TR_element_count = 0;
 				}
 				p = 'stop';
 			});
-			
+
 			//confirm formサブミットボタンのイベント設定
 			a("#finish-button").click(function(){
 				a(this).addClass("element-hover-edit");
@@ -679,7 +758,7 @@ var addTrustForm,TR_element_count = 0;
 				a(this).nextAll(".submit-element-container").css("left", (a(this).nextAll(".submit-element-container").width()-40)+"px");
 				p = 'start';
 			});
-			
+
 			//confirm returnボタンのメッセージ変更。画像の場合はオルト
 			a("input[name=returnbutton-text]").bind("textchange", function(){
 				if (a("input[name=return-to-input]").attr("type") === "submit") {
@@ -688,7 +767,7 @@ var addTrustForm,TR_element_count = 0;
 					a("input[name=return-to-input]").prop("alt", a(this).val());
 				}
 			});
-			
+
 			//confirm returnボタンのメッセージ変更。画像の場合はオルト
 			a("input[name=sendbutton-text]").bind("textchange", function(){
 				if (a("input[name=send-to-finish]").attr("type") === "submit") {
@@ -699,7 +778,7 @@ var addTrustForm,TR_element_count = 0;
 			});
 		},
 		setRequireMark: function(a){
-			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){	
+			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){
 				if (a(this).find("input[name="+a(this).attr("title")+"-required]").is(":checked")) {
 					a(this).find("div.subject > span.require").html(a("#require-mark-content > span.require").html());
 				}
@@ -707,14 +786,14 @@ var addTrustForm,TR_element_count = 0;
 			});
 		},
 		removeRequireMark: function(a){
-			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){	
+			a("#setting-form > tbody > tr").not("#first-setting-info").each(function(){
 				if (a(this).find("input[name="+a(this).attr("title")+"-required]").is(":checked")) {
 					a(this).find("div.subject > span.require").html('');
 				}
 
 			});
 		},
-	},	
+	},
 	a(document).ready(function ()
     {
         addTrustForm.init();

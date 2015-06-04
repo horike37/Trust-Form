@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Trust Forms\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-19 22:01+0900\n"
-"PO-Revision-Date: 2014-07-03 15:45+0900\n"
+"PO-Revision-Date: 2015-04-14 02:23+0900\n"
 "Last-Translator: Hitoshi Omagari <hitoshi@prime-strategy.co.jp>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,8 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.7.5\n"
+"Language: ja\n"
 "X-Poedit-SearchPath-0: trust-forms\n"
 
 # ######### trust-forms/trust-forms.php ###########
@@ -159,9 +160,11 @@ msgstr "右のタグをコピー＆ペーストして投稿またはページに
 msgid "Form Title"
 msgstr "フォーム名"
 
+# msgid "Standard Field"
+# msgstr "フィールド"
 #: line 15
-msgid "Standard Field"
-msgstr "フィールド"
+msgid "Form Element"
+msgstr "フォーム要素"
 
 #: line 16
 msgid "Advanced Field"
@@ -499,4 +502,26 @@ msgid "The e-mail mismatch"
 msgstr "メールアドレスが一致しません"
 
 msgid "Re-entering E-mail"
-msgstr ""
+msgstr "メールアドレスの確認入力"
+
+# added by natasha
+msgid "Please Input Text above the Form"
+msgstr "フォームの上に表示するテキストを入力してください。"
+
+msgid "Please Input Thanks Message"
+msgstr "完了のメッセージを入力してください。"
+
+msgid "Require Mark Setting"
+msgstr "必須マークの設定"
+
+msgid "Change Saved"
+msgstr "更新しました。"
+
+msgid "Click Elements to Setting."
+msgstr "要素をクリックして設定してください。"
+
+msgid "option value"
+msgstr "オプション値"
+
+msgid "Set two elements of mail address, and input the another title below each other."
+msgstr "メールアドレスの要素を二つ用意し、互いの要素のタイトルを下記に入力します。"
