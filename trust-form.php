@@ -4,11 +4,10 @@ Plugin Name: Trust Form
 Plugin URI: http://www.kakunin-pl.us/
 Description: Trust Form is a contact form with confirmation screen and mail and data base support.
 Author: horike takahiro
-Version: 1.8.8
+Version: 2.0
 Author URI: http://www.kakunin-pl.us/
 
-
-Copyright 2012 horike takahiro (email : horike37@gmail.com)
+Copyright 2015 horike takahiro (email : horike37@gmail.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,9 +29,6 @@ if ( ! defined( 'TRUST_FORM_DOMAIN' ) )
 	
 if ( ! defined( 'TRUST_FORM_PLUGIN_URL' ) )
 	define( 'TRUST_FORM_PLUGIN_URL', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ));
-
-if ( ! defined( 'TRUST_FORM_PLUGIN_DIR' ) )
-	define( 'TRUST_FORM_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ));
 	
 new Trust_Form();
 
@@ -1795,7 +1791,7 @@ function trust_form_shortcode($atts) {
 	} elseif (file_exists(get_stylesheet_directory(). '/trust-form-tpl-.php')) {
 		require_once(get_stylesheet_directory(). '/trust-form-tpl-.php');
 	} else {
-		require_once(TRUST_FORM_PLUGIN_DIR. '/trust-form-tpl-.php');
+		require_once(dirname(  __FILE__ ). '/trust-form-tpl-.php');
 	}
 
 	if ( ( isset( $_POST['send-to-confirm'] ) || isset( $_POST['send-to-confirm_x'] ) || ( isset($_POST['mode']) && $_POST['mode'] == 'confirm' ) ) && $trust_form->validate() ) {
