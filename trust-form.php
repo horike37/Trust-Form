@@ -1,11 +1,11 @@
 <?php 
 /*
 Plugin Name: Trust Form
-Plugin URI: http://www.kakunin-pl.us/
+Plugin URI: https://github.com/horike37/Trust-Form
 Description: Trust Form is a contact form with confirmation screen and mail and data base support.
 Author: horike takahiro
 Version: 2.0
-Author URI: http://www.kakunin-pl.us/
+Author URI: https://github.com/horike37/Trust-Form
 
 Copyright 2015 horike takahiro (email : horike37@gmail.com)
 
@@ -33,7 +33,7 @@ if ( ! defined( 'TRUST_FORM_PLUGIN_URL' ) )
 new Trust_Form();
 
 class Trust_Form {
-	private $version = '1.8.8';
+	private $version = '2.0';
 	private $edit_page;
 	private $entries_page;
 	private $base_dir;

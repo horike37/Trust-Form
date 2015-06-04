@@ -31,6 +31,8 @@ Please contact to me.
 * [Seguchi Rie](http://5dg.biz) making the admin screen icon
 * webnist Bug fixes
 * [Aihara Chieko](http://webourgeon.com/) making the default css
+* [natasha](http://natasha.jp/) making admin UI 
+* [Caxias Hosoya](https://wordpress.org/plugins/caxias-hosoya/) fixed bug
 
 == Installation ==
 
@@ -105,3 +107,5 @@ Please contact to me.
 * Delete CSV directory.
 = 1.8.8 =
 * some fix
+= 2.0 =
+* Update admin UI by making [natasha](http://natasha.jp/)
