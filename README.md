@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/horike37/Trust-Form.svg?branch=master)](https://travis-ci.org/horike37/Trust-Form)
 # Trust-Form
 === Trust Form ===
 Contributors: horike
