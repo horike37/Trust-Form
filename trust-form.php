@@ -2160,7 +2160,7 @@ class Trust_Form_Front {
 		}
 
 		foreach ( $this->name[0] as $key => $name ) {
-			if ( preg_match('/['.$name.']/i', $body) ) {
+			if ( !empty($name) && preg_match('/['.preg_quote($name).']/i', $body) ) {
 				if ( isset($data['data'][$key]) )
 					$body = str_replace( '['.$name.']', $data['data'][$key], $body );
 			}
@@ -2168,7 +2168,7 @@ class Trust_Form_Front {
 
 		$subject = $this->user_mail[0]['subject2'];
 		foreach ( $this->name[0] as $key => $name ) {
-			if ( preg_match('/['.$name.']/i', $subject) ) {
+			if ( !empty($name) && preg_match('/['.preg_quote($name).']/i', $subject) ) {
 				if ( isset($data['data'][$key]) )
 					$subject = str_replace( '['.$name.']', $data['data'][$key], $subject );
 			}
@@ -2206,7 +2206,7 @@ class Trust_Form_Front {
 
 		$subject = $this->admin_mail[0]['subject'];
 		foreach ( $this->name[0] as $key => $name ) {
-			if ( preg_match('/['.$name.']/i', $subject) ) {
+			if ( !empty($name) && preg_match('/['.preg_quote($name).']/i', $subject) ) {
 				if ( isset($data['data'][$key]) )
 					$subject = str_replace( '['.$name.']', $data['data'][$key], $subject );
 			}
