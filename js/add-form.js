@@ -342,6 +342,7 @@ var addTrustForm,TR_element_count = 0;
 
 						var p = t.val(), tmp = '';
 
+                        w = t.parent().parent().parent().find('input[name=selectbox-default-value]').val();
 						p = p.replace(/\r/g, '');
 						p = p.split(/\n/g);
 
