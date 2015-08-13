@@ -289,7 +289,7 @@ msgid "Confirm Screen"
 msgstr ""
 
 #: line 226
-msgid "Finsh Screen"
+msgid "Finish Screen"
 msgstr ""
 
 #: line 230
