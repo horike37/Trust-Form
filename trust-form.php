@@ -123,7 +123,7 @@ class Trust_Form {
 		register_post_type( 'trust-form', 
 							array( 
 								'labels' => array( 'name' => __( 'Trust Form', TRUST_FORM_DOMAIN ) ),
-								'public' => false,
+								'public' => true,
 								'hierarchical' => false,
 								'supports' => array( 'title', 'editor', 'custom-fields' ),
 								'rewrite' => false,
@@ -1951,17 +1951,17 @@ class Trust_Form_Front {
 		$class = isset($this->attr[0]['class'][$key]) && $this->attr[0]['class'][$key] != '' ? 'class="'.esc_html($this->attr[0]['class'][$key]).'"' : '';
 		switch ( $this->type[0][$key] ) {
 			case 'text':
-				$value = ($_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$size = isset($this->attr[0]['size'][$key]) && $this->attr[0]['size'][$key] != '' ? 'size="'.esc_html($this->attr[0]['size'][$key]).'"' : '';
 				$maxlength = isset($this->attr[0]['maxlength'][$key]) && $this->attr[0]['maxlength'][$key] != '' ? 'maxlength="'.esc_html($this->attr[0]['maxlength'][$key]).'"' : '';
-				$attribute = ($_POST[$key]!=='') ? 'value' : 'placeholder';
+				$attribute = (isset($_POST[$key])&&$_POST[$key]!=='') ? 'value' : 'placeholder';
 				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' '.$attribute.'="'.esc_html($value).'" />';
 				break;
 			case 'textarea':
-				$value = ($_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$cols = isset($this->attr[0]['cols'][$key]) && $this->attr[0]['cols'][$key] != '' ? 'cols="'.esc_html($this->attr[0]['cols'][$key]).'"' : '';
 				$rows = isset($this->attr[0]['rows'][$key]) && $this->attr[0]['rows'][$key] != '' ? 'rows="'.esc_html($this->attr[0]['rows'][$key]).'"' : '';
-				if($_POST[$key]!==''){
+				if(isset($_POST[$key])&&$_POST[$key]!==''){
 					$value = $_POST[$key];
 					$placeholder = '';
 				}else{
@@ -2000,10 +2000,10 @@ class Trust_Form_Front {
 				return $radio;
 				break;
 			case 'e-mail':
-				$value = isset($this->attr[0]['value'][$key]) ? $this->attr[0]['value'][$key] : '';
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$size = isset($this->attr[0]['size'][$key]) && $this->attr[0]['size'][$key] != '' ? 'size="'.esc_html($this->attr[0]['size'][$key]).'"' : '';
 				$maxlength = isset($this->attr[0]['maxlength'][$key]) && $this->attr[0]['maxlength'][$key] != '' ? 'maxlength="'.esc_html($this->attr[0]['maxlength'][$key]).'"' : '';
-				$attribute = ($_POST[$key]!=='') ? 'value' : 'placeholder';
+				$attribute = (isset($_POST[$key])&&$_POST[$key]!=='') ? 'value' : 'placeholder';
 				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' '.$attribute.'="'.esc_html($value).'" />';
 				break;
 		}
