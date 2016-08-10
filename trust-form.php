@@ -123,7 +123,7 @@ class Trust_Form {
 		register_post_type( 'trust-form', 
 							array( 
 								'labels' => array( 'name' => __( 'Trust Form', TRUST_FORM_DOMAIN ) ),
-								'public' => true,
+								'public' => false,
 								'hierarchical' => false,
 								'supports' => array( 'title', 'editor', 'custom-fields' ),
 								'rewrite' => false,
