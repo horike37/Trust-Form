@@ -1165,42 +1165,43 @@ class Trust_Form_Entries_List_Table extends WP_List_Table {
 	 * @since	1.0
 	 */
 	function column_entry_0( $item ) {
+		$page = isset($_GET['page']) ? esc_attr($_GET['page']) : '' ;
 		if ( $this->status == '' ) {
-			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'trash', $this->id, $item['ID'] );
+			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'trash', $this->id, $item['ID'] );
 			if ( $this->responce[$item['ID']]['status'] == 'new' ) {
-				$read_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'read', $this->id, $item['ID'] );
+				$read_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'read', $this->id, $item['ID'] );
 				$actions = array (
-					'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $_REQUEST['page'], 'edit', $this->id, $item['ID'] ),
+					'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $page, 'edit', $this->id, $item['ID'] ),
 					'read'   => '<a href="'.wp_nonce_url( $read_url, 'bulk-entries' ).'">'.__( 'Move to Read', TRUST_FORM_DOMAIN ).'</a>',
 					'trash'    => '<a href="'.wp_nonce_url( $trash_url, 'bulk-entries' ).'">'.__( 'Move to Trash', TRUST_FORM_DOMAIN ).'</a>'
 				);
 			} elseif ( $this->responce[$item['ID']]['status'] == 'read' ) {
-				$new_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'new', $this->id, $item['ID'] );
+				$new_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'new', $this->id, $item['ID'] );
 				$actions = array (
-					'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $_REQUEST['page'], 'edit', $this->id, $item['ID'] ),
+					'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $page, 'edit', $this->id, $item['ID'] ),
 					'new'   => '<a href="'.wp_nonce_url( $new_url, 'bulk-entries' ).'">'.__( 'Move to New', TRUST_FORM_DOMAIN ).'</a>',
 					'trash'    => '<a href="'.wp_nonce_url( $trash_url, 'bulk-entries' ).'">'.__( 'Move to Trash', TRUST_FORM_DOMAIN ).'</a>'
 				);
 			}
 		} elseif ( $this->status == 'new' ) {
-			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'trash', $this->id, $item['ID'] );
-			$read_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'read', $this->id, $item['ID'] );
+			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'trash', $this->id, $item['ID'] );
+			$read_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'read', $this->id, $item['ID'] );
 			$actions = array (
-				'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $_REQUEST['page'], 'edit', $this->id, $item['ID'] ),
+				'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $page, 'edit', $this->id, $item['ID'] ),
 				'read'   => '<a href="'.wp_nonce_url( $read_url, 'bulk-entries' ).'">'.__( 'Move to Read', TRUST_FORM_DOMAIN ).'</a>',
 				'trash'    => '<a href="'.wp_nonce_url( $trash_url, 'bulk-entries' ).'">'.__( 'Move to Trash', TRUST_FORM_DOMAIN ).'</a>'
 			);
 		} elseif ( $this->status == 'read' ) {
-			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'trash', $this->id, $item['ID'] );
-			$new_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'new', $this->id, $item['ID'] );
+			$trash_url  = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'trash', $this->id, $item['ID'] );
+			$new_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'new', $this->id, $item['ID'] );
 			$actions = array (
-				'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $_REQUEST['page'], 'edit', $this->id, $item['ID'] ),
+				'view'     => sprintf( '<a href="?page=%s&action=%s&form=%s&entry=%s">'.__( 'View', TRUST_FORM_DOMAIN ).'</a>', $page, 'edit', $this->id, $item['ID'] ),
 				'new'   => '<a href="'.wp_nonce_url( $new_url, 'bulk-entries' ).'">'.__( 'Move to New', TRUST_FORM_DOMAIN ).'</a>',
 				'trash'    => '<a href="'.wp_nonce_url( $trash_url, 'bulk-entries' ).'">'.__( 'Move to Trash', TRUST_FORM_DOMAIN ).'</a>'
 			);
 		} else {
-			$delete_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'delete', $this->id, $item['ID'] );
-			$restore_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$_REQUEST['page'], 'untrash',$this->id, $item['ID'] );
+			$delete_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'delete', $this->id, $item['ID'] );
+			$restore_url = sprintf( '?page=%s&action=%s&form=%s&entry=%s' ,$page, 'untrash',$this->id, $item['ID'] );
 			$actions = array (
 				'restore'    => '<a href="'.wp_nonce_url( $restore_url, 'bulk-entries').'">' .__( 'Restore', TRUST_FORM_DOMAIN ). '</a>',
 				'delete'     => '<a href="'.wp_nonce_url( $delete_url, 'bulk-entries').'">' .__( 'Delete Permanently', TRUST_FORM_DOMAIN ). '</a>'
@@ -1530,17 +1531,19 @@ class Trust_Form_Edit_List_Table extends WP_List_Table {
 	 * @since	1.0
 	 */
 	function column_title( $item ) {
+		$page = isset($_GET['page']) ? esc_attr($_GET['page']) : '' ;
+		
 		if ( $this->status == '' ) {
-			$trash_url = sprintf( '?page=%s&action=%s&form=%s' ,$_REQUEST['page'], 'trash', $item['ID'] );
-			$duplicate_url = sprintf( '?page=%s&action=%s&form=%s', $_REQUEST['page'], 'duplicate', $item['ID'] );
+			$trash_url = sprintf( '?page=%s&action=%s&form=%s' ,$page, 'trash', $item['ID'] );
+			$duplicate_url = sprintf( '?page=%s&action=%s&form=%s', $page, 'duplicate', $item['ID'] );
 			$actions = array (
-				'edit'      => sprintf( '<a href="?page=%s&action=%s&form=%s">' .__( 'Edit', TRUST_FORM_DOMAIN ). '</a>', $_REQUEST['page'], 'edit', $item['ID'] ),
+				'edit'      => sprintf( '<a href="?page=%s&action=%s&form=%s">' .__( 'Edit', TRUST_FORM_DOMAIN ). '</a>', $page, 'edit', $item['ID'] ),
 				'trash'     => '<a href="'.wp_nonce_url( $trash_url, 'bulk-forms').'">' .__( 'Move to Trash', TRUST_FORM_DOMAIN ). '</a>',
 				'duplicate' => '<a href="'.wp_nonce_url( $duplicate_url, 'bulk-forms').'">' .__( 'Duplicate', TRUST_FORM_DOMAIN ). '</a>'
 			);
 		} elseif ( $this->status == 'trash' ){
-			$delete_url = sprintf( '?page=%s&action=%s&form=%s' ,$_REQUEST['page'], 'delete', $item['ID'] );
-			$restore_url = sprintf( '?page=%s&action=%s&form=%s' ,$_REQUEST['page'], 'untrash', $item['ID'] );
+			$delete_url = sprintf( '?page=%s&action=%s&form=%s' ,$page, 'delete', $item['ID'] );
+			$restore_url = sprintf( '?page=%s&action=%s&form=%s' ,$page, 'untrash', $item['ID'] );
 			$actions = array (
 				'restore'    => '<a href="'.wp_nonce_url( $restore_url, 'bulk-forms').'">' .__( 'Restore', TRUST_FORM_DOMAIN ). '</a>',
 				'delete'     => '<a href="'.wp_nonce_url( $delete_url, 'bulk-forms').'">' .__( 'Delete Permanently', TRUST_FORM_DOMAIN ). '</a>'

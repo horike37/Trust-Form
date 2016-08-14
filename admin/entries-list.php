@@ -4,6 +4,7 @@ if( isset($_GET['form']) && is_numeric($_GET['form']) )
 	$form_id = $_GET['form'];
 	
 $status = isset($_GET['status']) ? $_GET['status'] : 'all';
+$page   = isset($_GET['page']) ? $_GET['page'] : '' ;
 
 $list_table = new Trust_Form_Entries_List_Table($form_id);
 ?>
@@ -30,7 +31,7 @@ $list_table->views();
  ?>
 <form id="entries-filter" method="get">
 <?php //$list_table->search_box( __( 'Search Entries', TRUST_FORM_DOMAIN ), 'trust-form-search-entries' ); ?>
-<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>"; />
+<input type="hidden" name="page" value="<?php echo esc_attr($page); ?>"; />
 <input type="hidden" name="form" value="<?php echo $form_id ?>"; />
 <?php $list_table->display();
 if ( $status != 'trash' ) :

@@ -1,3 +1,4 @@
+</h2>
 <?php
 $display = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? 'style="display:none;"' : '' ;
 $form_admin_input = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $this->form_id, 'form_admin_input', true );

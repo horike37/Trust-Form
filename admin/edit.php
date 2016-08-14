@@ -20,7 +20,7 @@ if ( isset( $_GET['message'] ) ) {
 ?>
 <div class="wrap">
 <?php screen_icon( 'trust-form-logo' ); ?>
-<h2><?php echo esc_html( __( 'Trust Form', TRUST_FORM_DOMAIN ) ); ?></h2>
+<h2><?php echo esc_html( __( 'Trust Form', TRUST_FORM_DOMAIN ) ); ?>
 <?php
 if ( isset( $_GET['action'] ) && 'edit' == $_GET['action'] ) {
 	require_once ( $this->admin_dir. '/make-form.php' );
