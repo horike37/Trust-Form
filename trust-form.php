@@ -125,7 +125,7 @@ class Trust_Form {
 		register_post_type( 'trust-form', 
 							array( 
 								'labels' => array( 'name' => __( 'Trust Form', TRUST_FORM_DOMAIN ) ),
-								'public' => false,
+								'public' => true,
 								'hierarchical' => false,
 								'supports' => array( 'title', 'editor', 'custom-fields' ),
 								'rewrite' => false,
@@ -728,19 +728,23 @@ jQuery(document).ready(function() {
 				param['attr']['class'][name] = jQuery(this).find('.setting-element-discription > ul > li:first > input').attr('class') ? jQuery(this).find('.setting-element-discription > ul > li:first > input').attr('class') : '' ;
 
 			} else if ( jQuery(this).attr('title') == 'text' ) {
+				//console.log('Value of text - '+)
 				param['attr']['size'][name] = jQuery(this).find('.setting-element-discription > input').attr('size') ? jQuery(this).find('.setting-element-discription > input').attr('size') : '';
 				param['attr']['maxlength'][name] = jQuery(this).find('.setting-element-discription > input').attr('maxlength') ? jQuery(this).find('.setting-element-discription > input').attr('maxlength') : '';
 				param['attr']['class'][name] = jQuery(this).find('.setting-element-discription > input').attr('class') ? jQuery(this).find('.setting-element-discription > input').attr('class') : '' ;
+				param['attr']['value'][name] = jQuery(this).find('.setting-element-discription > input').val() ? jQuery(this).find('.setting-element-discription > input').val() : '' ;
 
 			} else if ( jQuery(this).attr('title') == 'textarea' ) {
 				param['attr']['cols'][name] = jQuery(this).find('.setting-element-discription > textarea').attr('cols') ? jQuery(this).find('.setting-element-discription > textarea').attr('cols') : '';
 				param['attr']['rows'][name] = jQuery(this).find('.setting-element-discription > textarea').attr('rows') ? jQuery(this).find('.setting-element-discription > textarea').attr('rows') : '';
 				param['attr']['class'][name] = jQuery(this).find('.setting-element-discription > textarea').attr('class') ? jQuery(this).find('.setting-element-discription > textarea').attr('class') : '' ;
+				param['attr']['value'][name] = jQuery(this).find('.setting-element-discription > textarea').val() ? jQuery(this).find('.setting-element-discription > textarea').val() : '' ;
 
 			} else if ( jQuery(this).attr('title') == 'e-mail' ) {
 				param['attr']['size'][name] = jQuery(this).find('.setting-element-discription > input').attr('size') ? jQuery(this).find('.setting-element-discription > input').attr('size') : '';
 				param['attr']['maxlength'][name] = jQuery(this).find('.setting-element-discription > input').attr('maxlength') ? jQuery(this).find-('.setting-element-discription > input').attr('maxlength') : '';
 				param['attr']['class'][name] = jQuery(this).find('.setting-element-discription > input').attr('class') ? jQuery(this).find('.setting-element-discription > input').attr('class') : '' ;
+				param['attr']['value'][name] = jQuery(this).find('.setting-element-discription > input').val() ? jQuery(this).find('.setting-element-discription > input').val() : '' ;
 			}
 			param['attr']['akismet'][name] = jQuery(this).find('.edit-element-container input[name=akismet-config-'+name+']:checked').val();
 			param['form_front']['element'][name] = jQuery(this).children('td.setting-element-discription').html();
@@ -888,7 +892,7 @@ jQuery(document).ready(function() {
 	 */
 	public function wp_ajax_save() {
 		check_ajax_referer( 'trust-form-ajax', 'security' );
-
+		
 		$id = isset($_POST['id'])&&$_POST['id'] != 0 ? $_POST['id'] : '';
 		$post = array(
   			'ID' => (int)$id,
@@ -2001,20 +2005,28 @@ class Trust_Form_Front {
 	 * @since	1.0
 	 */
 	public function get_element( $key ) {
-
+		
 		$class = isset($this->attr[0]['class'][$key]) && $this->attr[0]['class'][$key] != '' ? 'class="'.esc_html($this->attr[0]['class'][$key]).'"' : '';
 		switch ( $this->type[0][$key] ) {
 			case 'text':
-				$value = isset($_POST[$key]) ? $_POST[$key] : '';
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$size = isset($this->attr[0]['size'][$key]) && $this->attr[0]['size'][$key] != '' ? 'size="'.esc_html($this->attr[0]['size'][$key]).'"' : '';
 				$maxlength = isset($this->attr[0]['maxlength'][$key]) && $this->attr[0]['maxlength'][$key] != '' ? 'maxlength="'.esc_html($this->attr[0]['maxlength'][$key]).'"' : '';
-				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' value="'.esc_html($value).'" />';
+				$attribute = (isset($_POST[$key])&&$_POST[$key]!=='') ? 'value' : 'placeholder';
+				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' '.$attribute.'="'.esc_html($value).'" />';
 				break;
 			case 'textarea':
-				$value = isset($_POST[$key]) ? $_POST[$key] : '';
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$cols = isset($this->attr[0]['cols'][$key]) && $this->attr[0]['cols'][$key] != '' ? 'cols="'.esc_html($this->attr[0]['cols'][$key]).'"' : '';
 				$rows = isset($this->attr[0]['rows'][$key]) && $this->attr[0]['rows'][$key] != '' ? 'rows="'.esc_html($this->attr[0]['rows'][$key]).'"' : '';
-				return '<textarea name="'.esc_html($key).'" '.$rows.' '.$cols.''.$class.' >'.esc_html($value).'</textarea>';
+				if(isset($_POST[$key])&&$_POST[$key]!==''){
+					$value = $_POST[$key];
+					$placeholder = '';
+				}else{
+					$placeholder = 'placeholder="'.$this->attr[0]['value'][$key].'"';
+					$value = '';
+				}
+				return '<textarea name="'.esc_html($key).'" '.$rows.' '.$cols.' '.$class.' '.$placeholder.' >'.esc_html($value).'</textarea>';
 				break;
 			case 'selectbox':
 				$select  = '<select name="'.esc_html($key).'" '.$class.' >';
@@ -2046,10 +2058,11 @@ class Trust_Form_Front {
 				return $radio;
 				break;
 			case 'e-mail':
-				$value = isset($_POST[$key]) ? $_POST[$key] : '';
+				$value = (isset($_POST[$key])&&$_POST[$key]!=='') ? $_POST[$key] : $this->attr[0]['value'][$key];
 				$size = isset($this->attr[0]['size'][$key]) && $this->attr[0]['size'][$key] != '' ? 'size="'.esc_html($this->attr[0]['size'][$key]).'"' : '';
 				$maxlength = isset($this->attr[0]['maxlength'][$key]) && $this->attr[0]['maxlength'][$key] != '' ? 'maxlength="'.esc_html($this->attr[0]['maxlength'][$key]).'"' : '';
-				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' value="'.esc_html($value).'" />';
+				$attribute = (isset($_POST[$key])&&$_POST[$key]!=='') ? 'value' : 'placeholder';
+				return '<input type="text" name="'.esc_html($key).'" '.$size.' '.$maxlength.' '.$class.' '.$attribute.'="'.esc_html($value).'" />';
 				break;
 		}
 	}
