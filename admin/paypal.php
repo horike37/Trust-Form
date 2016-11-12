@@ -1,3 +1,5 @@
+<?php if ( ! defined ( 'ABSPATH' ) ) exit; ?>
+
 <div id="paypal-footer">
 <?php if ( defined('WPLANG') && WPLANG == 'ja' ) : ?>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">

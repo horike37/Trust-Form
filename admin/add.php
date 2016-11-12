@@ -1,8 +1,8 @@
 <?php
+if ( ! defined ( 'ABSPATH' ) ) exit;
+
 if( isset($_POST['action']) && $_POST['action'] === 'save' ) {
 	check_admin_referer('trust-form-make-form');
-	
-	//var_dump($_POST);	
 }
 ?>
 <div class="wrap">

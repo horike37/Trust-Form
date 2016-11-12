@@ -1,5 +1,7 @@
 </h2>
 <?php
+if ( ! defined ( 'ABSPATH' ) ) exit;
+
 $display = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? 'style="display:none;"' : '' ;
 $form_admin_input = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $this->form_id, 'form_admin_input', true );
 $form_admin_confirm = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get_post_meta( $this->form_id, 'form_admin_confirm', true );
@@ -20,7 +22,6 @@ $form_config = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : get
 <div id="element-container" class="postbox-container" style="width:25%;">
 <?php
 add_meta_box( 'standard-form', __( 'Form Element', TRUST_FORM_DOMAIN ), 'trustform_standard_form_meta_box', 'trustform', 'advanced', 'core' );
-//add_meta_box( 'advanced-form', __( 'Advanced Field', TRUST_FORM_DOMAIN ), 'trustform_advanced_form_meta_box', 'trustform', 'advanced', 'core' );
 
 do_meta_boxes( 'trustform', 'advanced', $this );
 wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
@@ -357,7 +358,7 @@ function trustform_advanced_form_meta_box() {
 </ul>
 -->
 <div class="contact-form contact-form-input">
-<?php if ( $form_admin_input !='' ) : ?>
+<?php if ( !empty( $form_admin_input ) ) : ?>
 <?php echo $form_admin_input; ?>
 <?php  else : ?>
 <!-- HTML -->
@@ -412,7 +413,7 @@ function trustform_advanced_form_meta_box() {
 </div>
 <div id="tab-2">
 <div class="contact-form contact-form-confirm">
-<?php if ( $form_admin_confirm !='' ) : ?>
+<?php if ( !empty( $form_admin_confirm ) ) : ?>
 <?php echo $form_admin_confirm; ?>
 <?php  else : ?>
 <!-- HTML -->
@@ -449,7 +450,7 @@ function trustform_advanced_form_meta_box() {
 </div>
 <div id="tab-3">
 <div class="contact-form contact-form-finish">
-<?php if ( $form_admin_finish !='' ) : ?>
+<?php if ( !empty( $form_admin_finish ) ) : ?>
 <?php echo $form_admin_finish; ?>
 <?php  else : ?>
 <!-- HTML -->
@@ -534,6 +535,6 @@ $other_setting = !isset( $_GET['action'] ) || 'edit' != $_GET['action'] ? '' : g
 <div class="ui-dialog-content">
 <p><?php echo esc_html( __( 'require text', TRUST_FORM_DOMAIN ) ); ?> <input id="require-mark-text" type="text" size="24" value="<?php echo $form_config != '' && isset($form_config[0]['require']) ? $form_config[0]['require'] : ''; ?>" /></p>
 <p><?php echo esc_html( __( 'require image', TRUST_FORM_DOMAIN ) ); ?> <a id="require-mark-image" rel="button_media_1" href="JavaScript:void(0);" class="media-upload">Select File</a></p>
-<p id="require-mark-content"><span class="require"><?php echo $form_config != '' && isset($form_config[0]['require']) ? $form_config[0]['require'] : ''; ?></span></p>
+<p id="require-mark-content"><span class="require"><?php echo !empty($form_config) && isset($form_config[0]['require']) ? $form_config[0]['require'] : ''; ?></span></p>
 </div>
 </div>

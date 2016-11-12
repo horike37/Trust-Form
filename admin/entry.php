@@ -51,7 +51,7 @@ if ( $note['status'] == 'new' ) {
 <span><?php echo esc_html( __( 'Status', TRUST_FORM_DOMAIN ) ); ?> : <?php echo esc_html( $status_his ); ?></span><br />
 <span>Add time:<?php echo esc_html( $note['date'] ); ?></span>
 </p>
-<p class="note"><?php echo esc_html( $note['note'] ); ?></p>
+<p class="note"><?php echo wp_kses( $note['note'], array('br' => array()) ); ?></p>
 </div>
 <?php endforeach; ?>
 <div id="add-note">

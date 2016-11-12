@@ -1,4 +1,6 @@
 <?php
+if ( ! defined ( 'ABSPATH' ) ) exit;
+
 $form_id = -1;
 if( isset($_GET['form']) && is_numeric($_GET['form']) )
 	$form_id = $_GET['form'];
@@ -30,7 +32,6 @@ $list_table->prepare_items();
 $list_table->views();
  ?>
 <form id="entries-filter" method="get">
-<?php //$list_table->search_box( __( 'Search Entries', TRUST_FORM_DOMAIN ), 'trust-form-search-entries' ); ?>
 <input type="hidden" name="page" value="<?php echo esc_attr($page); ?>"; />
 <input type="hidden" name="form" value="<?php echo $form_id ?>"; />
 <?php $list_table->display();

@@ -24,6 +24,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+if ( ! defined ( 'ABSPATH' ) ) exit;
+
 if ( ! defined( 'TRUST_FORM_DOMAIN' ) )
 	define( 'TRUST_FORM_DOMAIN', 'trust-form' );
 	
@@ -416,15 +418,25 @@ class Trust_Form {
 				$responce = get_post_meta( $form, 'answer' );
 				$current_user = wp_get_current_user();
 				$prev_value = $responce[$entry];
-				$responce[$entry]['note'][] = array( 'display_name' => $current_user->display_name,
-														'mail'         => $current_user->user_email,
-														'date'         => date_i18n('Y/m/d H:i:s'),
-														'note'         => $_POST['add_note'],
-														'status'       => $_POST['entry_status']
-													 );
+				$entry_status = $_POST['entry_status'];
+				if ( $entry_status !== 'new' && $entry_status !== 'read' ) {
+					$entry_status = 'new';
+				}
+				$add_note = nl2br(strip_tags($_POST['add_note']));
+				$responce[$entry]['note'][] = array( 
+					'display_name' => $current_user->display_name,
+					'mail'         => $current_user->user_email,
+					'date'         => date_i18n('Y/m/d H:i:s'),
+					'note'         => $add_note,
+					'status'       => $entry_status
+				);
 				
 				if ( $responce[$entry]{'status'} != $_REQUEST['entry_status'] ) {
-					$responce[$entry]{'status'} = $_REQUEST['entry_status'];
+					$entry_status = $_REQUEST['entry_status'];
+					if ( $entry_status !== 'new' && $entry_status !== 'read' ) {
+						$entry_status = 'new';
+					}
+					$responce[$entry]{'status'} = $entry_status;
 				}
 				update_post_meta( $form, 'answer', $responce[$entry], $prev_value );
 			}
@@ -792,7 +804,7 @@ jQuery(document).ready(function() {
 			//changed by natasha
 			var btn = jQuery('#save-change');
 				//btn.css('display', 'none');
-				btn.after(jQuery('<img>', {id:'loading-icon',src:'../wp-content/plugins/trust-form/images/ajax-loader.gif',style:'margin-left:30px;'}));
+				btn.after(jQuery('<img>', {id:'loading-icon',src:'<?php echo TRUST_FORM_PLUGIN_URL; ?>/images/ajax-loader.gif',style:'margin-left:30px;'}));
 				setTimeout( function(id) {
    					jQuery('#loading-icon').remove();
    					btn.css('display', 'block');
@@ -879,11 +891,11 @@ jQuery(document).ready(function() {
 
 		$id = isset($_POST['id'])&&$_POST['id'] != 0 ? $_POST['id'] : '';
 		$post = array(
-  					'ID' => (int)$id,
-					'post_type' => 'trust-form',
-					'post_status' => 'publish',
-					'post_title' => $_POST['config']['title']
-					 );
+  			'ID' => (int)$id,
+			'post_type' => 'trust-form',
+			'post_status' => 'publish',
+			'post_title' => sanitize_text_field( $_POST['config']['title'] )
+		);
 
 		$post_id = wp_insert_post( $post );
 		if ( $post_id ) {
@@ -893,20 +905,63 @@ jQuery(document).ready(function() {
 					$name[$idx_1] = $key_1;
 				}
 			}
-			if (array_key_exists('name', $_POST)) {update_post_meta( $post_id, 'name', $name );}
-			if (array_key_exists('attention', $_POST)) {update_post_meta( $post_id, 'attention', $_POST['attention'] );}
-			if (array_key_exists('type', $_POST)) {update_post_meta( $post_id, 'type', $_POST['type'] );}
-			if (array_key_exists('validation', $_POST)) {update_post_meta( $post_id, 'validation', $_POST['validation'] );}
-			if (array_key_exists('attr', $_POST)) {update_post_meta( $post_id, 'attr', $_POST['attr'] );}
-			if (array_key_exists('admin_mail', $_POST)) {update_post_meta( $post_id, 'admin_mail', $_POST['admin_mail'] );}
-			if (array_key_exists('user_mail', $_POST)) {update_post_meta( $post_id, 'user_mail', $_POST['user_mail'] );}
-			//if (array_key_exists('form_admin', $_POST)) {update_post_meta( $post_id, 'form_admin', $_POST['form_admin'] );}
-			if (array_key_exists('form_admin', $_POST)) {update_post_meta( $post_id, 'form_admin_input', $_POST['form_admin']['input'] );}
-			if (array_key_exists('form_admin', $_POST)) {update_post_meta( $post_id, 'form_admin_confirm', $_POST['form_admin']['confirm'] );}
-			if (array_key_exists('form_admin', $_POST)) {update_post_meta( $post_id, 'form_admin_finish', $_POST['form_admin']['finish'] );}
-			if (array_key_exists('form_front', $_POST)) {update_post_meta( $post_id, 'form_front', $_POST['form_front'] );}
-			if (array_key_exists('config', $_POST)) {update_post_meta( $post_id, 'config', $_POST['config'] );}
-			if (array_key_exists('other_setting', $_POST)) {update_post_meta( $post_id, 'other_setting', $_POST['other_setting'] );}
+			if (array_key_exists('name', $_POST)) {
+				update_post_meta( $post_id, 'name', $name );
+			}
+
+			if (array_key_exists('attention', $_POST)) {
+				$attention = is_array($_POST['attention']) ? $_POST['attention'] : array();
+				update_post_meta( $post_id, 'attention', $attention );
+			}
+
+			if (array_key_exists('type', $_POST)) {
+				$type = is_array($_POST['type']) ? $_POST['type'] : array();
+				update_post_meta( $post_id, 'type', $type );
+			}
+
+			if (array_key_exists('validation', $_POST)) {
+				$validation = is_array($_POST['validation']) ? $_POST['validation'] : array();
+				update_post_meta( $post_id, 'validation', $validation );
+			}
+
+			if (array_key_exists('attr', $_POST)) {
+				$attr = is_array($_POST['attr']) ? $_POST['attr'] : array();
+				update_post_meta( $post_id, 'attr', $attr );
+			}
+
+			if (array_key_exists('admin_mail', $_POST)) {
+				$admin_mail = is_array($_POST['admin_mail']) ? $_POST['admin_mail'] : array();
+				update_post_meta( $post_id, 'admin_mail', $admin_mail );
+			}
+
+			if (array_key_exists('user_mail', $_POST)) {
+				$user_mail = is_array($_POST['user_mail']) ? $_POST['user_mail'] : array();
+				update_post_meta( $post_id, 'user_mail', $user_mail );
+			}
+
+			if (array_key_exists('form_admin', $_POST)) {
+				$form_admin = $_POST['form_admin'];
+				if ( is_array($form_admin) ) {
+					update_post_meta( $post_id, 'form_admin_input', $form_admin['input'] );
+					update_post_meta( $post_id, 'form_admin_confirm', $form_admin['confirm'] );
+					update_post_meta( $post_id, 'form_admin_finish', $form_admin['finish'] );
+				}
+			}
+
+			if (array_key_exists('form_front', $_POST)) {
+				$config = is_array($_POST['config']) ? $_POST['config'] : array();
+				update_post_meta( $post_id, 'form_front', $_POST['form_front'] );
+			}
+
+			if (array_key_exists('config', $_POST)) {
+				$config = is_array($_POST['config']) ? $_POST['config'] : array();
+				update_post_meta( $post_id, 'config', $config );
+			}
+
+			if (array_key_exists('other_setting', $_POST)) {
+				$other_settiong = strip_tags($_POST['other_setting']);
+				update_post_meta( $post_id, 'other_setting', $other_settiong );
+			}
 		}
 		echo esc_html( $post_id );
 		die();

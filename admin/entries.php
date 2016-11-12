@@ -1,4 +1,6 @@
 <?php
+if ( ! defined ( 'ABSPATH' ) ) exit;
+
 $updated_message = '';
 if ( isset( $_GET['message'] ) ) {
 	

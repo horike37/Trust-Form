@@ -1,3 +1,5 @@
+<?php if ( ! defined ( 'ABSPATH' ) ) exit; ?>
+
 <a class="add-new-h2" href="?page=trust-form-add"><?php echo esc_html( __( 'Add Form', TRUST_FORM_DOMAIN ) ) ?></a>
 </h2>
 <?php if ( $updated_message ) : ?>
