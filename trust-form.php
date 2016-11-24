@@ -2396,7 +2396,7 @@ class Trust_Form_Front {
 						$this->err_msg[$key][] = $Trust_Form_Validator_Message['required'];
 					if ( $_POST[$key] != "" && !is_email($_POST[$key]) )
 						$this->err_msg[$key][] = $Trust_Form_Validator_Message['e-mail'];
-					if ( isset( $_POST['send-to-confirm'] ) && isset($this->validate[0][$key]['e_mail_confirm']) && $this->validate[0][$key]['e_mail_confirm'] != '' ) {
+					if ( ( isset( $_POST['send-to-confirm'] ) || isset( $_POST['send-to-confirm_x'] ) ) && isset($this->validate[0][$key]['e_mail_confirm']) && $this->validate[0][$key]['e_mail_confirm'] != '' ) {
 						foreach ( $this->name[0] as $key_1 => $name_1 ) {
 							if ( $this->validate[0][$key]['e_mail_confirm'] == $name_1 ) {
 								if ( $_POST[$key] != $_POST[$key_1] )
